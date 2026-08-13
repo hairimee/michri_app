@@ -56,13 +56,65 @@
 
 - [기획안](docs/product-plan.md) — 문제 정의, 커뮤니티 설계, 기능 명세, 데이터 모델, 프라이버시 설계, 로드맵
 
+## 개발 환경
+
+### 준비물
+
+- Node 20 이상, npm
+- iOS 시뮬레이터(Xcode) 또는 Android 에뮬레이터, 혹은 실기기 + Expo Go
+- Supabase 프로젝트 하나 (무료 티어로 충분하다)
+
+### 앱 실행
+
+```bash
+npm install
+cp .env.example .env      # Supabase URL과 anon key 채우기
+npm start                 # i(iOS) / a(Android)
+```
+
+`.env` 에는 **anon key까지만** 둔다. service_role key는 RLS를 통째로 우회하므로 앱 어디에도 넣지 않는다.
+
+### DB (Supabase)
+
+마이그레이션은 `supabase/migrations/` 에 있다. 스키마 → RLS 정책 → Storage 순서로 세 개다.
+
+```bash
+npx supabase login
+npx supabase link --project-ref <프로젝트-ref>
+npm run db:push           # 마이그레이션 적용
+npm run db:types          # src/types/database.ts 재생성
+```
+
+Docker가 있으면 `npx supabase start` 로 로컬 스택을 띄워 같은 마이그레이션을 먼저 시험해볼 수 있다.
+
+### 명령
+
+| | |
+|---|---|
+| `npm start` | Expo 개발 서버 |
+| `npm run typecheck` | 타입 검사 |
+| `npm run lint` | ESLint |
+| `npm run db:push` | 마이그레이션 적용 |
+| `npm run db:types` | DB 타입 생성 |
+| `npm run test:rls` | 방 간 데이터 격리 회귀 테스트 |
+
+### RLS 격리 테스트
+
+`scripts/rls-isolation-test.mjs` 는 **커뮤니티 간 데이터 누출**을 회귀로 붙잡는다. 테스트 계정 3개로 로그인해 앱과 똑같은 경로(publishable key + 세션)로만 접근하므로, 여기서 막히면 실제 앱에서도 막힌다. 스키마나 정책을 건드렸으면 이걸 돌린다.
+
+```bash
+npm run test:rls
+```
+
+`.env` 의 `RLS_TEST_EMAIL_BASE` 주소로 플러스 별칭 계정을 만든다. 대시보드에서 Authentication → Email 의 **Confirm email 이 꺼져 있어야** 한다(개발 프로젝트 기준).
+
 ## 현재 상태
 
-**M0 — 환경 세팅 전.** 기획안이 나온 단계이고 아직 코드는 없다.
+**M0 완료.** Expo 앱 골격(5탭)·디자인 토큰이 올라갔고, 마이그레이션 9개가 Supabase 프로젝트에 적용됐다. 방 간 격리 테스트 26개 전부 통과.
 
 | 단계 | 내용 | 상태 |
 |---|---|---|
-| M0 | Expo + Supabase 세팅, 스키마·RLS | 예정 |
+| M0 | Expo + Supabase 세팅, 스키마·RLS | ✅ |
 | M1 | 인증 · 프로필 · 선교사 인증 | |
 | M2 | 커뮤니티 · 초대 · 광장 | |
 | M3 | 피드 · 다중 방 게시 · 기도/댓글 | |
@@ -71,11 +123,25 @@
 | M6 | 푸시 · 신고 · 차단 | |
 | M7 | 클로즈드 베타 · 스토어 심사 | |
 
+**남은 정리거리** — `supabase db advisors` 의 성능 경고 두 종류가 열려 있다. 정책 안의 `auth.uid()` 를 `(select auth.uid())` 로 감싸면 행마다가 아니라 질의마다 한 번만 평가된다(38건). 그리고 같은 동작에 정책이 둘씩 걸린 표가 8개 있다. 둘 다 피드 규모가 커지기 전에 한 번에 훑는 게 낫다.
+대시보드에서는 Authentication → Password 의 유출 비밀번호 검사(HaveIBeenPwned)를 켜두면 좋다.
+
 ## 구조
 
 ```
 mission_christ/
 ├── docs/
-│   └── product-plan.md
+│   └── product-plan.md          기획안
+├── src/
+│   ├── app/                     화면 (Expo Router)
+│   │   ├── _layout.tsx          providers · 세션
+│   │   └── (tabs)/              홈 · 커뮤니티 · 숙소 · 알림 · 내 정보
+│   ├── components/              공용 컴포넌트
+│   ├── lib/                     supabase 클라이언트 · query client · env
+│   ├── store/                   zustand (세션)
+│   ├── theme/                   디자인 토큰
+│   └── types/                   database.ts (자동 생성)
+├── supabase/
+│   └── migrations/              스키마 · RLS · Storage
 └── README.md
 ```

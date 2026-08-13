@@ -261,10 +261,12 @@ comments           id, post_id, community_id, author_id, body, created_at
 reactions          post_id, community_id, user_id, kind(prayed|amen)
 support_logs       missionary_id, supporter_id, created_at   -- 금액 저장 안 함
 
-stays              id, host_id, title, region_label, address_enc,
+stays              id, host_id, title, region_label,
                    capacity, available_from, available_to,
                    cost_type(free|actual_cost|paid), cost_amount,
                    house_rules, visibility(members|community|targeted), status
+stay_addresses     stay_id, address_line, address_detail, contact
+                                                   -- 수락된 게스트와 호스트만 열람
 stay_media         stay_id, storage_path
 stay_audience      stay_id, community_id, missionary_id   -- 지정 공개 대상
 stay_requests      id, stay_id, guest_id, message, date_from, date_to,
@@ -282,6 +284,8 @@ notifications      id, user_id, type, payload, read_at
 - `home_church`는 DB 레벨 `NOT NULL`로 강제한다. 앱 화면에서만 필수로 두면 우회 경로가 남는다
 - `churches`는 사용자가 입력한 교회명을 누적해 자동완성에 쓰는 보조 테이블이다. 정규화된 마스터 데이터가 아니며, `profiles.home_church`는 이 테이블을 참조하지 않고 문자열로 저장한다 (교회명을 못 찾아 가입이 막히는 일이 없어야 한다)
 - 광장은 `communities`의 한 행(`type='open'`)으로 둔다. 특별 취급을 코드에 흩뿌리지 않고 멤버십 판정 한 곳에서만 분기한다
+- 숙소 상세 주소는 `stays`의 컬럼이 아니라 **`stay_addresses` 별도 표**다. RLS는 행 단위라 컬럼 하나만 가릴 수 없다. 주소를 다른 행에 두어야 "수락 전까지 마스킹"이 DB에서 강제된다 (M0 구현 중 확정)
+- 방 개설과 초대 참여는 정책이 아니라 **RPC**(`create_community`·`join_community_by_code`·`preview_invite`)로 처리한다. 둘 다 "아직 멤버가 아닌 순간"을 다뤄야 해서 멤버십 기반 정책으로는 풀리지 않는다. 판정의 뿌리를 멤버십 하나로 유지하려고 예외를 정책이 아닌 함수 쪽에 몰았다 (M0 구현 중 확정)
 
 ## 8. 기술 스택
 
@@ -372,6 +376,7 @@ MVP 단계에서는 숫자보다 **"밴드를 대체했는가"**가 기준이다
 
 | 버전 | 날짜 | 내용 |
 |---|---|---|
+| v0.5 | 2026-08-13 | M0 구현 결과 반영. 숙소 상세 주소를 `stay_addresses` 별도 표로 분리, 방 개설·초대 참여를 RPC로 처리 |
 | v0.4 | 2026-08-11 | **커뮤니티 개설을 회원 전체에게 개방**(v0.3의 인증 선교사 제한 철회). 인증은 광장 글쓰기·후원 계좌·숙소 요청에만 건다. 방 난립 리스크와 대응 추가 |
 | v0.3 | 2026-08-11 | **소속 교회 전원 필수 입력**(파송 선교사는 파송 교회 추가). 숙소 요청은 인증 선교사 한정. 인증이 여는 권한을 표로 정리 |
 | v0.2 | 2026-08-11 | 커뮤니티를 1급 개념으로 승격(초대제 프라이빗 방 + 광장). 목적을 후원이 아닌 커뮤니티로 명확화. 글의 `공개 범위` 설정을 `대상 커뮤니티 선택`으로 대체. 데이터 모델·화면·로드맵 반영 |
