@@ -49,3 +49,6 @@ settings.local.json
 # env
 .env
 .env.local
+
+# Claude Code (personal, per-machine)
+.claude/settings.local.json
