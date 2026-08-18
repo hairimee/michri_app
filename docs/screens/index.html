@@ -154,7 +154,7 @@ body {
   width: 320px; height: 660px;
   border-radius: 34px;
   padding: 8px;
-  background: linear-gradient(170deg, #4a5457, #23292b);
+  background: linear-gradient(170deg, #4a5058, #22262e);
   box-shadow: 0 14px 34px -14px var(--c-shadow), 0 2px 6px -2px var(--c-shadow);
   transition: transform .18s ease;
 }
@@ -171,7 +171,7 @@ body {
 
 /* ── 앱 팔레트 (src/theme/tokens.ts 그대로) ───────────────── */
 .stage[data-app="light"] {
-  --a-bg: #F7F3EC; --a-surface: #FDFBF9; --a-surface-alt: #EBE5DC; --a-border: #DCD7CF;
+  --a-bg: #F8FAFC; --a-surface: #FDFEFF; --a-surface-alt: #EDEFF3; --a-border: #D5D9DF;
   --a-text: #111721; --a-text-2: #5C6574; --a-text-3: #808A98; --a-on-accent: #FFFFFF;
   --a-accent: #1550A2; --a-accent-soft: #DCE9FC;
   --a-danger: #C0453B; --a-warning: #C88A2E; --a-success: #3F8A5B;
@@ -339,6 +339,117 @@ body {
 .tail ul { margin: 0; padding-left: 18px; color: var(--c-ink-2); font-size: 14px; }
 .tail li { margin-bottom: 7px; }
 .tail li b { color: var(--c-ink); font-weight: 600; }
+/* ── 디자인 시스템 ─────────────────────────────────────────── */
+.ds h3 {
+  margin: 44px 0 4px; font-size: 15px; letter-spacing: -.01em;
+}
+.ds h3 + .hint { margin: 0 0 16px; }
+.ds .hint { color: var(--c-ink-2); font-size: 13px; max-width: 74ch; line-height: 1.6; }
+.ds .hint code { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; font-size: 12px; }
+
+/* 색 표 */
+.ds-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.ds-table th {
+  text-align: left; font-weight: 600; font-size: 11px; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--c-ink-3);
+  padding: 0 12px 7px 0; border-bottom: 1px solid var(--c-rule);
+  white-space: nowrap;
+}
+.ds-table td { padding: 9px 12px 9px 0; border-bottom: 1px solid var(--c-rule-2); vertical-align: middle; }
+.ds-table tr:last-child td { border-bottom: 0; }
+.ds-table .role { color: var(--c-ink); font-weight: 600; white-space: nowrap; }
+.ds-table .use { color: var(--c-ink-2); }
+.ds-table .tok,
+.ds-table .val {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11.5px; color: var(--c-ink-2); white-space: nowrap;
+}
+.chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11.5px; color: var(--c-ink-2); white-space: nowrap;
+}
+.chip i {
+  width: 22px; height: 22px; border-radius: 5px; flex: none;
+  border: 1px solid var(--c-rule);
+}
+.ds-scroll { overflow-x: auto; }
+
+/* 글자 견본 */
+.spec { border-top: 1px solid var(--c-rule-2); padding: 13px 0; display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap; }
+.spec:first-of-type { border-top: 1px solid var(--c-rule); }
+.spec .meta {
+  flex: none; width: 190px; min-width: 0;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11.5px; color: var(--c-ink-3);
+}
+.spec .meta b { display: block; color: var(--c-ink); font-weight: 600; font-size: 12px; }
+.spec .sample { color: var(--c-ink); min-width: 0; overflow-wrap: anywhere; }
+
+/* 간격·모서리 */
+.ds-bars { display: flex; flex-direction: column; gap: 7px; }
+.ds-bars .row { display: flex; align-items: center; gap: 12px; font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; font-size: 11.5px; color: var(--c-ink-3); }
+.ds-bars .row b { color: var(--c-ink); font-weight: 600; width: 44px; flex: none; }
+.ds-bars .row span { width: 40px; flex: none; }
+.ds-bars .bar { height: 12px; border-radius: 3px; background: var(--c-accent); flex: none; }
+.ds-radii { display: flex; gap: 16px; flex-wrap: wrap; }
+.ds-radii figure { margin: 0; text-align: center; }
+.ds-radii div {
+  width: 74px; height: 56px; background: var(--c-accent-w);
+  border: 1px solid var(--c-accent); margin-bottom: 6px;
+}
+.ds-radii figcaption { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; font-size: 11px; color: var(--c-ink-3); }
+.ds-radii figcaption b { display: block; color: var(--c-ink); font-weight: 600; font-size: 11.5px; }
+
+/* 규칙 */
+.ds-rules { margin: 0; padding-left: 18px; color: var(--c-ink-2); font-size: 13.5px; max-width: 82ch; }
+.ds-rules li { margin-bottom: 9px; line-height: 1.6; }
+.ds-rules b { color: var(--c-ink); font-weight: 600; }
+
+@media (max-width: 640px) {
+  .spec .meta { width: 100%; }
+  .ds-bars .row b { width: 40px; }
+}
+/* ── 탭 ────────────────────────────────────────────────────── */
+.tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+
+/* 상위 탭 — 문서 구역 */
+.wrap > .tabs {
+  margin: 8px 0 0; padding-bottom: 0;
+  border-bottom: 1px solid var(--c-rule);
+}
+.wrap > .tabs [role="tab"] {
+  font: inherit; font-size: 14px; font-weight: 600;
+  padding: 9px 16px; border: 0; background: transparent; cursor: pointer;
+  color: var(--c-ink-3); border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+.wrap > .tabs [role="tab"]:hover { color: var(--c-ink); }
+.wrap > .tabs [role="tab"][aria-selected="true"] {
+  color: var(--c-ink); border-bottom-color: var(--c-accent);
+}
+
+/* 하위 탭 — 화면 흐름 */
+.tabs.sub { margin: 24px 0 0; gap: 2px; }
+.tabs.sub [role="tab"] {
+  font: inherit; font-size: 13px; font-weight: 600;
+  padding: 6px 13px; border: 1px solid transparent; border-radius: 999px;
+  background: transparent; color: var(--c-ink-2); cursor: pointer;
+}
+.tabs.sub [role="tab"]:hover { background: var(--c-rule-2); color: var(--c-ink); }
+.tabs.sub [role="tab"][aria-selected="true"] {
+  background: var(--c-accent-w); color: var(--c-accent); border-color: var(--c-accent);
+}
+.tabs [role="tab"]:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 2px; }
+
+.pane[hidden] { display: none; }
+.pane > .flow:first-child { padding-top: 32px; }
+#p-system > .flow { padding-top: 32px; }
+
+@media (max-width: 640px) {
+  .wrap > .tabs [role="tab"] { padding: 9px 12px; font-size: 13.5px; }
+  .tabs.sub [role="tab"] { padding: 6px 10px; font-size: 12.5px; }
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -387,14 +498,6 @@ body {
     <button type="button" data-app-theme="light" aria-pressed="true">라이트</button>
     <button type="button" data-app-theme="dark" aria-pressed="false">다크</button>
   </div>
-  <nav>
-    <a href="#onboarding">온보딩</a>
-    <a href="#verify">인증</a>
-    <a href="#community">커뮤니티</a>
-    <a href="#feed">피드</a>
-    <a href="#support">후원·숙소</a>
-    <a href="#etc">알림·내 정보</a>
-  </nav>
 </header>
 
 <main class="wrap stage" data-app="light">
@@ -410,940 +513,1165 @@ body {
       <span><b>M2~M6</b> 순서·구조만 확인하는 화면</span>
       <span><b>파일 경로</b> 그대로 만들 라우트</span>
       <span><b>상단 토글</b> 앱 라이트/다크 팔레트 전환</span>
+      <span><b>탭</b> 디자인 시스템 · 갤러리, 갤러리 안은 흐름별로 나뉜다</span>
     </div>
   </section>
 
   <!-- ═══════════════════════════════ 온보딩 ═══════════════════════════════ -->
-  <section class="flow" id="onboarding">
-    <header>
-      <h2>흐름 1 — 가입과 온보딩</h2>
-      <span class="note">M1 · 9화면</span>
-    </header>
-    <p class="sub">가입은 열려 있고 열람은 방에 속해야 열린다. 그래서 이 흐름의 끝은 "둘러보기"가 아니라
-      <b>빈 커뮤니티 목록</b>이거나, 초대 링크로 들어왔다면 <b>그 방</b>이다. 소속 교회 단계는 건너뛰기 버튼을 두지 않는다.</p>
 
-    <div class="grid">
+  <div class="tabs" role="tablist" aria-label="문서 구역">
+    <button type="button" role="tab" id="t-system" aria-controls="p-system" aria-selected="false" tabindex="-1" data-hash="system">디자인 시스템</button>
+    <button type="button" role="tab" id="t-gallery" aria-controls="p-gallery" aria-selected="true" tabindex="0" data-hash="gallery">갤러리</button>
+  </div>
 
-      <!-- 01 스플래시 -->
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag">M1</span><span class="seq mono">01</span></div>
-          <h3>스플래시</h3>
-          <code>app/_layout.tsx</code>
-          <p>세션을 확인하는 동안만 머문다. 로그인돼 있으면 탭으로, 아니면 로그인으로 즉시 보낸다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="body center">
-            <div class="avt lg ac" style="border-radius:20px">m</div>
-            <div>
-              <div class="h1">Movelet</div>
-              <div class="p" style="margin-top:6px">초대받은 사람끼리<br>기도로 잇는 공동체</div>
-            </div>
-            <div class="mini" style="position:absolute;bottom:34px">불러오는 중…</div>
-          </div>
-        </div></div>
-      </figure>
+  <div class="pane" id="p-system" role="tabpanel" aria-labelledby="t-system" hidden>
+    <!-- ═══════════════════════════════ 디자인 시스템 ═══════════════════════════════ -->
+  
+    <section class="flow ds" id="system">
+      <header>
+        <h2>디자인 시스템</h2>
+        <span class="note">src/theme/tokens.ts</span>
+      </header>
+      <p class="sub">위 화면들이 쓴 값 전부다. 화면 코드에 색·간격·글자 크기를 숫자로 직접 쓰지 않는다 —
+        여기 있는 이름으로만 쓴다. 그래야 브랜드가 바뀔 때 고칠 곳이 한 파일로 끝난다.</p>
+  
+      <h3>색</h3>
+      <p class="hint">브랜드는 "종이와 잉크"다. 종이는 순백 직전의 찬 흰색, 잉크는 청흑색, 강조는 잉크 파랑.
+        값은 <code>OKLCH</code> 로 설계하고 hex 로 옮겼다 — React Native 의 StyleSheet 가 <code>oklch()</code> 를 읽지 못한다.
+        잉크 색조 <code>hue 258</code> 하나로 통일했고, 종이의 흰색에도 그 색조를 흔적만(chroma 0.003) 남겼다.
+        완전한 무채색은 잉크 파랑 옆에서 누렇게 보인다.</p>
+      <div class="ds-scroll">
+        <table class="ds-table">
+          <thead>
+            <tr><th>역할</th><th>토큰</th><th>라이트</th><th>다크</th><th>쓰임</th></tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="role">바탕</td>
+            <td class="tok">background</td>
+            <td><span class="chip"><i style="background:#F8FAFC"></i>#F8FAFC</span></td>
+            <td><span class="chip"><i style="background:#0D1117"></i>#0D1117</span></td>
+            <td class="use">화면 바닥</td>
+          </tr>
+          <tr>
+            <td class="role">표면</td>
+            <td class="tok">surface</td>
+            <td><span class="chip"><i style="background:#FDFEFF"></i>#FDFEFF</span></td>
+            <td><span class="chip"><i style="background:#171C23"></i>#171C23</span></td>
+            <td class="use">카드·시트·바텀시트</td>
+          </tr>
+          <tr>
+            <td class="role">눌린 표면</td>
+            <td class="tok">surfaceAlt</td>
+            <td><span class="chip"><i style="background:#EDEFF3"></i>#EDEFF3</span></td>
+            <td><span class="chip"><i style="background:#252A33"></i>#252A33</span></td>
+            <td class="use">입력칸·칩·인셋</td>
+          </tr>
+          <tr>
+            <td class="role">테두리</td>
+            <td class="tok">border</td>
+            <td><span class="chip"><i style="background:#D5D9DF"></i>#D5D9DF</span></td>
+            <td><span class="chip"><i style="background:#353C46"></i>#353C46</span></td>
+            <td class="use">구분선·카드 윤곽</td>
+          </tr>
+          <tr>
+            <td class="role">본문</td>
+            <td class="tok">text</td>
+            <td><span class="chip"><i style="background:#111721"></i>#111721</span></td>
+            <td><span class="chip"><i style="background:#E9EDF2"></i>#E9EDF2</span></td>
+            <td class="use">제목과 본문</td>
+          </tr>
+          <tr>
+            <td class="role">보조</td>
+            <td class="tok">textSecondary</td>
+            <td><span class="chip"><i style="background:#5C6574"></i>#5C6574</span></td>
+            <td><span class="chip"><i style="background:#A4ABB6"></i>#A4ABB6</span></td>
+            <td class="use">설명·캡션</td>
+          </tr>
+          <tr>
+            <td class="role">흐린</td>
+            <td class="tok">textMuted</td>
+            <td><span class="chip"><i style="background:#808A98"></i>#808A98</span></td>
+            <td><span class="chip"><i style="background:#727985"></i>#727985</span></td>
+            <td class="use">플레이스홀더·시각</td>
+          </tr>
+          <tr>
+            <td class="role">강조 위 글자</td>
+            <td class="tok">textOnAccent</td>
+            <td><span class="chip"><i style="background:#FFFFFF"></i>#FFFFFF</span></td>
+            <td><span class="chip"><i style="background:#0A1320"></i>#0A1320</span></td>
+            <td class="use">강조색으로 채운 면 위</td>
+          </tr>
+          <tr>
+            <td class="role">강조</td>
+            <td class="tok">accent</td>
+            <td><span class="chip"><i style="background:#1550A2"></i>#1550A2</span></td>
+            <td><span class="chip"><i style="background:#74A6EF"></i>#74A6EF</span></td>
+            <td class="use">링크·활성 탭·주요 버튼·포커스</td>
+          </tr>
+          <tr>
+            <td class="role">옅은 강조</td>
+            <td class="tok">accentSoft</td>
+            <td><span class="chip"><i style="background:#DCE9FC"></i>#DCE9FC</span></td>
+            <td><span class="chip"><i style="background:#183053"></i>#183053</span></td>
+            <td class="use">선택된 칩·강조 배경</td>
+          </tr>
+          <tr>
+            <td class="role">위험</td>
+            <td class="tok">danger</td>
+            <td><span class="chip"><i style="background:#C0453B"></i>#C0453B</span></td>
+            <td><span class="chip"><i style="background:#E0685D"></i>#E0685D</span></td>
+            <td class="use">삭제·신고·오류</td>
+          </tr>
+          <tr>
+            <td class="role">주의</td>
+            <td class="tok">warning</td>
+            <td><span class="chip"><i style="background:#C88A2E"></i>#C88A2E</span></td>
+            <td><span class="chip"><i style="background:#E0AB55"></i>#E0AB55</span></td>
+            <td class="use">심사 대기·경고</td>
+          </tr>
+          <tr>
+            <td class="role">성공</td>
+            <td class="tok">success</td>
+            <td><span class="chip"><i style="background:#3F8A5B"></i>#3F8A5B</span></td>
+            <td><span class="chip"><i style="background:#5FAE7C"></i>#5FAE7C</span></td>
+            <td class="use">인증 완료·저장됨</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <h3>글자</h3>
+      <p class="hint">기도제목과 간증이 본문인 앱이라 본문 가독성에 무게를 뒀다 —
+        <code>body</code> 는 16/26 으로, 흔한 16/24 보다 행간이 넓다. 아래는 실제 크기다(위 목업은 0.81배).</p>
+        <div class="spec">
+          <div class="meta"><b>display</b>28 / 36 / 700</div>
+          <div class="sample" style="font-size:28px; line-height:36px; font-weight:700">기도편지</div>
+        </div>
+        <div class="spec">
+          <div class="meta"><b>title</b>20 / 28 / 700</div>
+          <div class="sample" style="font-size:20px; line-height:28px; font-weight:700">흐름 3 — 커뮤니티</div>
+        </div>
+        <div class="spec">
+          <div class="meta"><b>subtitle</b>17 / 24 / 600</div>
+          <div class="sample" style="font-size:17px; line-height:24px; font-weight:600">이번 달 기도제목</div>
+        </div>
+        <div class="spec">
+          <div class="meta"><b>body</b>16 / 26 / 400</div>
+          <div class="sample" style="font-size:16px; line-height:26px; font-weight:400">자카르타에 온 지 삼 년째입니다. 언어가 트이니 이제야 사람이 보입니다.</div>
+        </div>
+        <div class="spec">
+          <div class="meta"><b>bodyStrong</b>16 / 26 / 600</div>
+          <div class="sample" style="font-size:16px; line-height:26px; font-weight:600">이 방에 올린 글은 방 밖으로 나가지 않습니다.</div>
+        </div>
+        <div class="spec">
+          <div class="meta"><b>caption</b>13 / 18 / 400</div>
+          <div class="sample" style="font-size:13px; line-height:18px; font-weight:400">3일 전 · 기도 12</div>
+        </div>
+        <div class="spec">
+          <div class="meta"><b>label</b>12 / 16 / 600</div>
+          <div class="sample" style="font-size:12px; line-height:16px; font-weight:600">인증 대기</div>
+        </div>
+  
+      <h3>간격</h3>
+      <p class="hint">4의 배수. 화면에서는 <code>Spacing.md</code> 처럼만 쓴다. 막대는 값의 4배로 그렸다.</p>
+      <div class="ds-bars">
+          <div class="row"><b>xxs</b><span>2</span><div class="bar" style="width:8px"></div></div>
+          <div class="row"><b>xs</b><span>4</span><div class="bar" style="width:16px"></div></div>
+          <div class="row"><b>sm</b><span>8</span><div class="bar" style="width:32px"></div></div>
+          <div class="row"><b>md</b><span>12</span><div class="bar" style="width:48px"></div></div>
+          <div class="row"><b>lg</b><span>16</span><div class="bar" style="width:64px"></div></div>
+          <div class="row"><b>xl</b><span>24</span><div class="bar" style="width:96px"></div></div>
+          <div class="row"><b>xxl</b><span>32</span><div class="bar" style="width:128px"></div></div>
+          <div class="row"><b>xxxl</b><span>48</span><div class="bar" style="width:192px"></div></div>
+      </div>
+  
+      <h3>모서리</h3>
+      <p class="hint">네 단계면 충분하다. 견본은 지면에 맞춰 최대 28px 로 잘라 그렸다.</p>
+      <div class="ds-radii">
+          <figure><div style="border-radius:6px"></div><figcaption><b>sm</b>6<br>칩·작은 배지</figcaption></figure>
+          <figure><div style="border-radius:10px"></div><figcaption><b>md</b>10<br>입력칸·버튼</figcaption></figure>
+          <figure><div style="border-radius:16px"></div><figcaption><b>lg</b>16<br>카드·바텀시트</figcaption></figure>
+          <figure><div style="border-radius:28px"></div><figcaption><b>pill</b>999<br>토글·태그</figcaption></figure>
+      </div>
+  
+      <h3>규칙</h3>
+      <ul class="ds-rules">
+        <li><b>강조색은 형광펜이지 색 블록이 아니다.</b> 한 화면에서 3%를 넘기지 않는다. 링크·활성 탭·포커스 링·주요 버튼 하나까지다.
+          여러 개를 동시에 강조하면 아무것도 강조되지 않는다.</li>
+        <li><b>바탕은 순백이 아니다.</b> 순백은 밝은 곳에서 눈이 부시고, 그보다 밝은 색이 없어 카드와 입력칸을 명도로 띄울 수 없다.
+          <code>#F8FAFC</code> 는 순백 휘도의 95%다.</li>
+        <li><b>다크의 강조색 위에는 흰 글자를 얹지 않는다.</b> 다크의 강조색은 밝아서 흰 글자를 얹으면 2.49:1 로 깨진다.
+          그래서 <code>textOnAccent</code> 만 라이트·다크가 서로 반대다 — 흰색과 잉크색.</li>
+        <li><b>대비 기준.</b> 본문 7:1, 보조 텍스트와 강조색 4.5:1, 흐린 텍스트 3:1. 라이트·다크 양쪽에서 만족한다.
+          이 기준을 못 맞추는 색은 쓰지 않는다.</li>
+        <li><b>색만으로 상태를 알리지 않는다.</b> 위험·주의·성공에는 아이콘이나 문구를 함께 둔다.
+          적록색약이 인구의 약 8%다.</li>
+        <li><b>색을 바꿀 때는 hex 를 직접 만지지 않는다.</b> <code>tokens.ts</code> 주석의 OKLCH 를 고쳐 다시 변환한다.
+          hex 를 손으로 조정하면 색조와 명도가 미묘하게 어긋나 팔레트가 무너진다.</li>
+      </ul>
+    </section>
+  </div>
 
-      <!-- 02 로그인 -->
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag">M1</span><span class="seq mono">02</span></div>
-          <h3>로그인 · 가입</h3>
-          <code>app/(auth)/sign-in.tsx</code>
-          <p>애플 로그인은 스토어 심사 조건이라 M1 안에 넣는다. 비로그인으로 볼 수 있는 화면은 여기까지다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="body" style="justify-content:center;gap:18px">
-            <div>
-              <div class="h1">다시 오셨네요</div>
-              <div class="p" style="margin-top:6px">이메일 또는 소셜 계정으로 들어옵니다.</div>
-            </div>
-            <div class="fldset">
-              <div class="lbl">이메일</div>
-              <div class="fld filled">grace@example.com</div>
-            </div>
-            <div class="fldset">
-              <div class="lbl">비밀번호</div>
-              <div class="fld">••••••••</div>
-            </div>
-            <div class="btn">로그인</div>
-            <div class="row"><div class="rule grow"></div><span class="mini">또는</span><div class="rule grow"></div></div>
-            <div class="btn kakao sm" style="padding:11px">카카오로 계속하기</div>
-            <div class="btn apple sm" style="padding:11px">Apple로 계속하기</div>
-            <div class="mini" style="text-align:center;margin-top:2px">처음이신가요? <b style="color:var(--a-accent)">가입하기</b></div>
-          </div>
-          <div class="foot"><div class="mini" style="text-align:center">웹 페이지가 없는 앱입니다. 링크가 밖으로 새지 않습니다.</div></div>
-        </div></div>
-      </figure>
+  <div class="pane" id="p-gallery" role="tabpanel" aria-labelledby="t-gallery">
+    <div class="tabs sub" role="tablist" aria-label="화면 흐름">
+      <button type="button" role="tab" id="t-onboarding" aria-controls="p-onboarding" aria-selected="true" tabindex="0" data-hash="onboarding">온보딩</button>
+      <button type="button" role="tab" id="t-verify" aria-controls="p-verify" aria-selected="false" tabindex="-1" data-hash="verify">인증</button>
+      <button type="button" role="tab" id="t-community" aria-controls="p-community" aria-selected="false" tabindex="-1" data-hash="community">커뮤니티</button>
+      <button type="button" role="tab" id="t-feed" aria-controls="p-feed" aria-selected="false" tabindex="-1" data-hash="feed">피드</button>
+      <button type="button" role="tab" id="t-support" aria-controls="p-support" aria-selected="false" tabindex="-1" data-hash="support">후원·숙소</button>
+      <button type="button" role="tab" id="t-etc" aria-controls="p-etc" aria-selected="false" tabindex="-1" data-hash="etc">알림·내 정보</button>
+    </div>
 
-      <!-- 03 가입 -->
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag">M1</span><span class="seq mono">03</span></div>
-          <h3>이메일 가입</h3>
-          <code>app/(auth)/sign-up.tsx</code>
-          <p>여기서 받는 것은 계정뿐이다. 이름·교회는 다음 단계에서 받는다 — 가입 폼이 길면 중간에 이탈한다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><svg><use href="#i-back"/></svg><span class="t">가입</span></div>
-          <div class="body">
-            <div class="fldset">
-              <div class="lbl">이메일</div>
-              <div class="fld filled">grace@example.com</div>
+    <div class="pane" id="p-onboarding" role="tabpanel" aria-labelledby="t-onboarding">
+    <section class="flow" id="onboarding">
+      <header>
+        <h2>흐름 1 — 가입과 온보딩</h2>
+        <span class="note">M1 · 9화면</span>
+      </header>
+      <p class="sub">가입은 열려 있고 열람은 방에 속해야 열린다. 그래서 이 흐름의 끝은 "둘러보기"가 아니라
+        <b>빈 커뮤니티 목록</b>이거나, 초대 링크로 들어왔다면 <b>그 방</b>이다. 소속 교회 단계는 건너뛰기 버튼을 두지 않는다.</p>
+  
+      <div class="grid">
+  
+        <!-- 01 스플래시 -->
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag">M1</span><span class="seq mono">01</span></div>
+            <h3>스플래시</h3>
+            <code>app/_layout.tsx</code>
+            <p>세션을 확인하는 동안만 머문다. 로그인돼 있으면 탭으로, 아니면 로그인으로 즉시 보낸다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="body center">
+              <div class="avt lg ac" style="border-radius:20px">m</div>
+              <div>
+                <div class="h1">Movelet</div>
+                <div class="p" style="margin-top:6px">초대받은 사람끼리<br>기도로 잇는 공동체</div>
+              </div>
+              <div class="mini" style="position:absolute;bottom:34px">불러오는 중…</div>
             </div>
-            <div class="fldset">
-              <div class="lbl">비밀번호</div>
-              <div class="fld focus">••••••••••</div>
-              <div class="mini">8자 이상, 숫자와 문자를 섞어주세요.</div>
+          </div></div>
+        </figure>
+  
+        <!-- 02 로그인 -->
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag">M1</span><span class="seq mono">02</span></div>
+            <h3>로그인 · 가입</h3>
+            <code>app/(auth)/sign-in.tsx</code>
+            <p>애플 로그인은 스토어 심사 조건이라 M1 안에 넣는다. 비로그인으로 볼 수 있는 화면은 여기까지다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="body" style="justify-content:center;gap:18px">
+              <div>
+                <div class="h1">다시 오셨네요</div>
+                <div class="p" style="margin-top:6px">이메일 또는 소셜 계정으로 들어옵니다.</div>
+              </div>
+              <div class="fldset">
+                <div class="lbl">이메일</div>
+                <div class="fld filled">grace@example.com</div>
+              </div>
+              <div class="fldset">
+                <div class="lbl">비밀번호</div>
+                <div class="fld">••••••••</div>
+              </div>
+              <div class="btn">로그인</div>
+              <div class="row"><div class="rule grow"></div><span class="mini">또는</span><div class="rule grow"></div></div>
+              <div class="btn kakao sm" style="padding:11px">카카오로 계속하기</div>
+              <div class="btn apple sm" style="padding:11px">Apple로 계속하기</div>
+              <div class="mini" style="text-align:center;margin-top:2px">처음이신가요? <b style="color:var(--a-accent)">가입하기</b></div>
             </div>
-            <div class="fldset">
-              <div class="lbl">비밀번호 확인</div>
-              <div class="fld">다시 입력</div>
-            </div>
-            <div class="card soft" style="margin-top:4px">
-              <div class="row"><svg style="width:16px;height:16px;color:var(--a-accent)"><use href="#i-lock"/></svg>
-                <b style="font-size:12px;color:var(--a-accent)">익명 가입은 받지 않습니다</b></div>
-              <div class="p" style="font-size:11.5px">다음 단계에서 이름과 소속 교회를 입력합니다. 방에 초대하는 사람이 상대를 확인할 최소한의 근거입니다.</div>
-            </div>
-          </div>
-          <div class="foot"><div class="btn">계정 만들기</div></div>
-        </div></div>
-      </figure>
-
-      <!-- 04 프로필 -->
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag">M1</span><span class="seq mono">04</span></div>
-          <h3>프로필 — 이름·사진</h3>
-          <code>app/(onboarding)/profile.tsx</code>
-          <p>가명 사용을 이 단계에서 먼저 알려준다. 사역지 노출이 걸린 사람에게는 나중에 찾는 설정이면 늦다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><span class="t">프로필</span><span class="r mini">1 / 4</span></div>
-          <div class="body">
-            <div class="steps"><i class="on"></i><i></i><i></i><i></i></div>
-            <div class="h1">어떻게 불러드릴까요</div>
-            <div class="row" style="justify-content:center;padding:10px 0">
-              <div style="position:relative">
-                <div class="avt lg"><svg style="width:24px;height:24px"><use href="#i-me"/></svg></div>
-                <div class="chip on" style="position:absolute;bottom:-2px;right:-8px;padding:3px 7px">사진</div>
+            <div class="foot"><div class="mini" style="text-align:center">웹 페이지가 없는 앱입니다. 링크가 밖으로 새지 않습니다.</div></div>
+          </div></div>
+        </figure>
+  
+        <!-- 03 가입 -->
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag">M1</span><span class="seq mono">03</span></div>
+            <h3>이메일 가입</h3>
+            <code>app/(auth)/sign-up.tsx</code>
+            <p>여기서 받는 것은 계정뿐이다. 이름·교회는 다음 단계에서 받는다 — 가입 폼이 길면 중간에 이탈한다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><svg><use href="#i-back"/></svg><span class="t">가입</span></div>
+            <div class="body">
+              <div class="fldset">
+                <div class="lbl">이메일</div>
+                <div class="fld filled">grace@example.com</div>
+              </div>
+              <div class="fldset">
+                <div class="lbl">비밀번호</div>
+                <div class="fld focus">••••••••••</div>
+                <div class="mini">8자 이상, 숫자와 문자를 섞어주세요.</div>
+              </div>
+              <div class="fldset">
+                <div class="lbl">비밀번호 확인</div>
+                <div class="fld">다시 입력</div>
+              </div>
+              <div class="card soft" style="margin-top:4px">
+                <div class="row"><svg style="width:16px;height:16px;color:var(--a-accent)"><use href="#i-lock"/></svg>
+                  <b style="font-size:12px;color:var(--a-accent)">익명 가입은 받지 않습니다</b></div>
+                <div class="p" style="font-size:11.5px">다음 단계에서 이름과 소속 교회를 입력합니다. 방에 초대하는 사람이 상대를 확인할 최소한의 근거입니다.</div>
               </div>
             </div>
-            <div class="fldset">
-              <div class="lbl">이름 <span class="req">*</span></div>
-              <div class="fld focus">김은혜</div>
-            </div>
-            <div class="fldset">
-              <div class="lbl">한 줄 소개</div>
-              <div class="fld">예) 세부에서 아이들과 함께합니다</div>
-            </div>
-            <div class="card">
-              <div class="row"><div class="check on"><svg><use href="#i-check"/></svg></div>
-                <div class="grow"><b style="font-size:12.5px">가명을 씁니다</b>
-                  <div class="mini">사역지가 노출되면 위험한 경우 실명 대신 부르는 이름을 쓸 수 있습니다.</div></div></div>
-            </div>
-          </div>
-          <div class="foot"><div class="btn">다음</div></div>
-        </div></div>
-      </figure>
-
-      <!-- 05 교회 -->
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag">M1</span><span class="seq mono">05</span></div>
-          <h3>소속 교회 <span class="req">필수</span></h3>
-          <code>app/(onboarding)/church.tsx</code>
-          <p>건너뛰기 버튼이 없는 유일한 단계다. 자동완성은 <code style="display:inline;font-size:11px">record_church()</code> RPC가 쌓은 이름을 제안해 표기 흔들림을 줄인다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><svg><use href="#i-back"/></svg><span class="t">소속 교회</span><span class="r mini">2 / 4</span></div>
-          <div class="body">
-            <div class="steps"><i class="on"></i><i class="on"></i><i></i><i></i></div>
-            <div class="h1">출석 교회를 알려주세요</div>
-            <div class="p">검증하지 않습니다. 다만 적어야 한다는 사실이 진입 문턱이 되고, 방을 여는 사람이 확인할 근거가 됩니다.</div>
-            <div class="fldset" style="margin-top:2px">
-              <div class="lbl">출석 교회 <span class="req">*</span></div>
-              <div class="fld focus">새중앙</div>
-            </div>
-            <div class="card" style="padding:0;gap:0;overflow:hidden">
-              <div class="row" style="padding:10px 11px"><span class="grow"><b style="font-size:12.5px">새중앙교회</b>
-                <span class="mini"> · 안양시 동안구</span></span><span class="mini">1,204명</span></div>
-              <div class="rule"></div>
-              <div class="row" style="padding:10px 11px"><span class="grow"><b style="font-size:12.5px">새중앙성결교회</b>
-                <span class="mini"> · 부천시</span></span><span class="mini">28명</span></div>
-              <div class="rule"></div>
-              <div class="row" style="padding:10px 11px;color:var(--a-accent)">
-                <svg style="width:14px;height:14px"><use href="#i-plus"/></svg>
-                <span style="font-size:12.5px;font-weight:700">"새중앙" 새로 등록</span></div>
-            </div>
-            <div class="fldset">
-              <div class="lbl">교단 · 지역 (권장)</div>
-              <div class="fld">예) 예장합동 · 경기 안양</div>
-            </div>
-          </div>
-          <div class="foot"><div class="btn">다음</div><div class="mini" style="text-align:center">건너뛸 수 없습니다</div></div>
-        </div></div>
-      </figure>
-
-      <!-- 06 선교사 여부 -->
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag">M1</span><span class="seq mono">06</span></div>
-          <h3>선교사 여부</h3>
-          <code>app/(onboarding)/role.tsx</code>
-          <p>여기서 "예"를 고른 사람만 다음 화면(파송 정보)을 본다. 아니면 바로 서약으로 건너뛴다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><svg><use href="#i-back"/></svg><span class="t">역할</span><span class="r mini">3 / 4</span></div>
-          <div class="body">
-            <div class="steps"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
-            <div class="h1">선교사이신가요</div>
-            <div class="p">선교사로 표시해도 곧바로 인증되지는 않습니다. 인증은 관리자 확인 후 따로 붙습니다.</div>
-            <div class="card" style="border-color:var(--a-accent)">
-              <div class="row"><div class="radio on"></div><div class="grow">
-                <b style="font-size:13px">네, 선교사입니다</b>
-                <div class="mini">파송 형태를 다음 화면에서 확인합니다.</div></div></div>
-            </div>
-            <div class="card">
-              <div class="row"><div class="radio"></div><div class="grow">
-                <b style="font-size:13px">아니요, 함께 기도하는 사람입니다</b>
-                <div class="mini">방 참여·글쓰기·기도 반응은 모두 가능합니다.</div></div></div>
-            </div>
-            <div class="card soft">
-              <div class="lbl" style="color:var(--a-accent)">인증이 여는 것</div>
-              <div class="p" style="font-size:11.5px">광장 글쓰기 · 후원 계좌 등록 · 숙소 요청. 셋 다 남에게 열리거나 남의 집이 걸린 일입니다. 프라이빗 방 활동은 인증 없이 다 됩니다.</div>
-            </div>
-          </div>
-          <div class="foot"><div class="btn">다음</div></div>
-        </div></div>
-      </figure>
-
-      <!-- 07 파송 정보 -->
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag">M1</span><span class="seq mono">07</span></div>
-          <h3>파송 정보</h3>
-          <code>app/(onboarding)/sending.tsx</code>
-          <p>자비량·독립 선교사는 "파송 교회 없음"을 선택으로 명시한다. 빈칸으로 넘기게 두지 않는다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><svg><use href="#i-back"/></svg><span class="t">파송 정보</span><span class="r mini">3 / 4</span></div>
-          <div class="body">
-            <div class="steps"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
-            <div class="seg"><span class="on">파송 선교사</span><span>자비량 · 독립</span></div>
-            <div class="fldset">
-              <div class="lbl">파송 교회 <span class="req">*</span></div>
-              <div class="fld filled">새중앙교회</div>
-            </div>
-            <div class="card flat">
-              <div class="row"><div class="check on"><svg><use href="#i-check"/></svg></div>
-                <span style="font-size:12.5px">출석 교회와 같습니다</span></div>
-            </div>
-            <div class="fldset">
-              <div class="lbl">파송 단체 (선택)</div>
-              <div class="fld">예) GMS, 인터콥</div>
-            </div>
-            <div class="fldset">
-              <div class="lbl">사역 지역</div>
-              <div class="fld filled">필리핀 세부</div>
-            </div>
-            <div class="card">
-              <div class="row"><div class="check on"><svg><use href="#i-check"/></svg></div>
-                <div class="grow"><b style="font-size:12.5px">지역을 비공개로</b>
-                  <div class="mini">"동남아"까지만 보이고 도시명은 감춥니다.</div></div></div>
-            </div>
-          </div>
-          <div class="foot"><div class="btn">다음</div></div>
-        </div></div>
-      </figure>
-
-      <!-- 08 서약 -->
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag">M1</span><span class="seq mono">08</span></div>
-          <h3>서약 동의</h3>
-          <code>app/(onboarding)/pledge.tsx</code>
-          <p>약관이 아니라 서약이다. 캡처·외부 공유 금지를 사람 말로 읽히게 쓰고, 전체 동의 한 방을 두지 않는다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><svg><use href="#i-back"/></svg><span class="t">서약</span><span class="r mini">4 / 4</span></div>
-          <div class="body">
-            <div class="steps"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
-            <div class="h1">들어오기 전에<br>세 가지를 약속합니다</div>
-            <div class="card">
-              <div class="row"><div class="check on"><svg><use href="#i-check"/></svg></div>
-                <div class="grow"><b style="font-size:12.5px">방에서 본 것을 밖으로 옮기지 않겠습니다</b>
-                  <div class="mini">캡처·복사해 다른 단톡방이나 SNS에 올리지 않습니다.</div></div></div>
-            </div>
-            <div class="card">
-              <div class="row"><div class="check on"><svg><use href="#i-check"/></svg></div>
-                <div class="grow"><b style="font-size:12.5px">사역지와 이름을 함부로 말하지 않겠습니다</b>
-                  <div class="mini">누군가의 안전이 걸린 정보일 수 있습니다.</div></div></div>
-            </div>
-            <div class="card">
-              <div class="row"><div class="check"><svg><use href="#i-check"/></svg></div>
-                <div class="grow"><b style="font-size:12.5px">이용약관과 개인정보 처리방침에 동의합니다</b>
-                  <div class="mini">읽어보기</div></div></div>
-            </div>
-          </div>
-          <div class="foot"><div class="btn dim">동의하고 시작하기</div></div>
-        </div></div>
-      </figure>
-
-      <!-- 09 초대 진입 -->
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag">M1</span><span class="seq mono">09</span></div>
-          <h3>초대 링크로 진입</h3>
-          <code>app/invite/[code].tsx</code>
-          <p>아직 멤버가 아니라 정책으로는 아무것도 안 보인다. 이 화면의 내용은 전부 <code style="display:inline;font-size:11px">preview_invite()</code> RPC가 낸다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="body center">
-            <div class="chip ac">초대장</div>
-            <div class="avt lg ac" style="border-radius:18px">새</div>
-            <div>
-              <div class="h1">새중앙교회<br>파송 기도방</div>
-              <div class="p" style="margin-top:8px">이하은 님이 초대했습니다</div>
-            </div>
-            <div class="chips" style="justify-content:center">
-              <span class="chip">멤버 34명</span><span class="chip"><svg style="width:11px;height:11px"><use href="#i-lock"/></svg> 초대 전용</span>
-            </div>
-            <div class="p" style="max-width:230px">세부 사역을 위해 함께 기도하는 방입니다. 매주 화요일에 기도 편지가 올라옵니다.</div>
-          </div>
-          <div class="foot">
-            <div class="btn">참여하기</div>
-            <div class="mini" style="text-align:center">참여하면 이 방의 멤버에게 이름과 소속 교회가 보입니다.</div>
-          </div>
-        </div></div>
-      </figure>
-
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════ 인증 ═══════════════════════════════ -->
-  <section class="flow" id="verify">
-    <header>
-      <h2>흐름 2 — 선교사 인증</h2>
-      <span class="note">M1 · 3화면</span>
-    </header>
-    <p class="sub">M2 이후의 권한이 전부 여기에 물려 있다. 신청 화면과 심사 화면이 M1 안에서 짝으로 나와야
-      광장·후원·숙소를 만들 때 막힌 데서 시작하지 않는다.</p>
-
-    <div class="grid">
-
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag">M1</span><span class="seq mono">10</span></div>
-          <h3>인증 신청</h3>
-          <code>app/me/verification.tsx</code>
-          <p>관리자가 실제로 대조할 것만 받는다 — 파송 교회, 단체, 추천인. 서류 업로드는 넣지 않는다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><svg><use href="#i-back"/></svg><span class="t">선교사 인증</span></div>
-          <div class="body">
-            <div class="card soft">
-              <div class="row"><svg style="width:16px;height:16px;color:var(--a-accent)"><use href="#i-shield"/></svg>
-                <b style="font-size:12.5px;color:var(--a-accent)">인증되면 열리는 것</b></div>
-              <div class="p" style="font-size:11.5px">광장에 글쓰기 · 후원 계좌 등록 · 숙소 요청</div>
-            </div>
-            <div class="fldset">
-              <div class="lbl">파송 교회</div>
-              <div class="fld filled">새중앙교회 · 안양시 동안구</div>
-            </div>
-            <div class="fldset">
-              <div class="lbl">파송 단체</div>
-              <div class="fld filled">GMS</div>
-            </div>
-            <div class="fldset">
-              <div class="lbl">추천인 <span class="req">*</span></div>
-              <div class="fld focus">이하은 (새중앙교회 선교부)</div>
-              <div class="mini">앱 안의 회원이면 알림으로 확인을 요청합니다.</div>
-            </div>
-            <div class="fldset">
-              <div class="lbl">확인할 수 있는 연락처</div>
-              <div class="fld">교회 사무실 또는 담당자 전화</div>
-            </div>
-          </div>
-          <div class="foot"><div class="btn">심사 요청</div>
-            <div class="mini" style="text-align:center">보통 2~3일 걸립니다.</div></div>
-        </div></div>
-      </figure>
-
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag">M1</span><span class="seq mono">11</span></div>
-          <h3>심사 대기 상태</h3>
-          <code>app/me/verification.tsx</code>
-          <p>같은 라우트의 다른 상태. 대기 중에도 프라이빗 방 활동은 전부 열려 있다는 걸 여기서 말해준다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><svg><use href="#i-back"/></svg><span class="t">선교사 인증</span></div>
-          <div class="body" style="justify-content:center;gap:16px">
-            <div class="row" style="justify-content:center"><span class="chip warn" style="padding:6px 12px;font-size:12px">심사 중</span></div>
-            <div style="text-align:center">
-              <div class="h2">확인하고 있습니다</div>
-              <div class="p" style="margin-top:6px">8월 13일에 요청하셨습니다. 추천인 이하은 님께 확인을 요청해 두었습니다.</div>
-            </div>
-            <div class="card">
-              <div class="spread"><span style="font-size:12.5px">파송 교회 대조</span><span class="chip ok">확인</span></div>
-              <div class="rule"></div>
-              <div class="spread"><span style="font-size:12.5px">추천인 응답</span><span class="chip out">대기</span></div>
-              <div class="rule"></div>
-              <div class="spread"><span style="font-size:12.5px">관리자 최종 승인</span><span class="chip out">대기</span></div>
-            </div>
-            <div class="p" style="text-align:center">그동안에도 초대받은 방에서는 글쓰기·댓글·기도 반응이 모두 됩니다.</div>
-          </div>
-          <div class="foot"><div class="btn mute">신청 취소</div></div>
-        </div></div>
-      </figure>
-
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag">M1</span><span class="seq mono">12</span></div>
-          <h3>인증 심사 — 관리자</h3>
-          <code>app/(admin)/verifications.tsx</code>
-          <p>탭에 없는 별도 화면. <code style="display:inline;font-size:11px">profiles.is_admin</code> 인 계정에만 라우트가 열린다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><svg><use href="#i-back"/></svg><span class="t">인증 심사</span><span class="r"><span class="chip on">3</span></span></div>
-          <div class="body">
-            <div class="seg"><span class="on">대기 3</span><span>승인</span><span>보류</span></div>
-            <div class="card">
-              <div class="row"><div class="avt">김</div><div class="grow">
-                <b style="font-size:13px">김은혜</b><div class="mini">필리핀 세부 · 8월 13일 신청</div></div></div>
-              <div class="rule"></div>
-              <div class="mini">출석·파송 <b style="color:var(--a-text-2)">새중앙교회</b> (동일) · 단체 <b style="color:var(--a-text-2)">GMS</b></div>
-              <div class="mini">추천인 <b style="color:var(--a-text-2)">이하은</b> — 확인함 (8/13)</div>
-              <div class="row" style="gap:6px"><div class="btn sm grow">승인</div><div class="btn sm mute grow">보류</div></div>
-            </div>
-            <div class="card">
-              <div class="row"><div class="avt">박</div><div class="grow">
-                <b style="font-size:13px">박선우</b><div class="mini">자비량 · 일본 후쿠오카 · 8월 12일</div></div></div>
-              <div class="rule"></div>
-              <div class="mini">출석 <b style="color:var(--a-text-2)">수영로교회</b> · 파송 교회 없음</div>
-              <div class="mini" style="color:var(--a-warning)">추천인 응답 없음 — 3일 경과</div>
-            </div>
-          </div>
-        </div></div>
-      </figure>
-
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════ 커뮤니티 ═══════════════════════════════ -->
-  <section class="flow" id="community">
-    <header>
-      <h2>흐름 3 — 커뮤니티</h2>
-      <span class="note">M2 · 구조 확인용</span>
-    </header>
-    <p class="sub">권한의 뿌리다. 방 목록에서 광장은 맨 위에 고정으로 한 줄 두되, 프라이빗 방과 시각적으로 구분한다 —
-      같은 목록에 섞이면 어디에 쓰는 글인지 헷갈린다.</p>
-
-    <div class="grid">
-
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag later">M2</span><span class="seq mono">13</span></div>
-          <h3>커뮤니티 탭</h3>
-          <code>app/(tabs)/communities.tsx</code>
-          <p>가입 직후에는 광장 한 줄만 있는 화면이다. 그 빈 상태가 첫인상이므로 "방 만들기 / 초대 코드 입력"을 크게 둔다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><span class="t big">커뮤니티</span><span class="r"><svg><use href="#i-plus"/></svg></span></div>
-          <div class="body fade">
-            <div class="card soft">
-              <div class="row"><div class="avt ac">광</div><div class="grow">
-                <b style="font-size:13px">광장</b><div class="mini">앱 회원 모두가 봅니다</div></div>
-                <span class="chip ac">12</span></div>
-            </div>
-            <div class="lbl" style="margin-top:4px">내 방 4</div>
-            <div class="card">
-              <div class="row"><div class="avt">새</div><div class="grow">
-                <b style="font-size:13px">새중앙교회 파송 기도방</b>
-                <div class="mini">이하은 · 방금 · 기도제목 3</div></div><span class="chip on">3</span></div>
-            </div>
-            <div class="card">
-              <div class="row"><div class="avt">세</div><div class="grow">
-                <b style="font-size:13px">필리핀 세부 사역팀</b>
-                <div class="mini">김은혜 · 2시간 전</div></div><span class="chip out">방장</span></div>
-            </div>
-            <div class="card">
-              <div class="row"><div class="avt">화</div><div class="grow">
-                <b style="font-size:13px">화요 중보기도 모임</b>
-                <div class="mini">박선우 · 어제</div></div></div>
-            </div>
-            <div class="card">
-              <div class="row"><div class="avt">가</div><div class="grow">
-                <b style="font-size:13px">가족방</b><div class="mini">멤버 5명</div></div></div>
-            </div>
-          </div>
-          <div class="tabbar">
-            <a><svg><use href="#i-home"/></svg><span>홈</span></a>
-            <a class="on"><svg><use href="#i-comm"/></svg><span>커뮤니티</span></a>
-            <a><svg><use href="#i-stay"/></svg><span>숙소</span></a>
-            <a><span class="dot"><svg><use href="#i-bell"/></svg></span><span>알림</span></a>
-            <a><svg><use href="#i-me"/></svg><span>내 정보</span></a>
-          </div>
-        </div></div>
-      </figure>
-
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag later">M2</span><span class="seq mono">14</span></div>
-          <h3>방 만들기</h3>
-          <code>app/community/new.tsx</code>
-          <p>회원 누구나 만든다. 광장은 여기서 만들 수 없다 — <code style="display:inline;font-size:11px">create_community()</code> RPC가 private만 받는다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><svg><use href="#i-back"/></svg><span class="t">방 만들기</span></div>
-          <div class="body">
-            <div class="fldset">
-              <div class="lbl">방 이름 <span class="req">*</span></div>
-              <div class="fld focus">새중앙교회 파송 기도방</div>
-            </div>
-            <div class="fldset">
-              <div class="lbl">종류</div>
-              <div class="chips">
-                <span class="chip on">파송 교회</span><span class="chip">선교 단체</span>
-                <span class="chip">기도 모임</span><span class="chip">가족</span><span class="chip">기타</span>
+            <div class="foot"><div class="btn">계정 만들기</div></div>
+          </div></div>
+        </figure>
+  
+        <!-- 04 프로필 -->
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag">M1</span><span class="seq mono">04</span></div>
+            <h3>프로필 — 이름·사진</h3>
+            <code>app/(onboarding)/profile.tsx</code>
+            <p>가명 사용을 이 단계에서 먼저 알려준다. 사역지 노출이 걸린 사람에게는 나중에 찾는 설정이면 늦다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><span class="t">프로필</span><span class="r mini">1 / 4</span></div>
+            <div class="body">
+              <div class="steps"><i class="on"></i><i></i><i></i><i></i></div>
+              <div class="h1">어떻게 불러드릴까요</div>
+              <div class="row" style="justify-content:center;padding:10px 0">
+                <div style="position:relative">
+                  <div class="avt lg"><svg style="width:24px;height:24px"><use href="#i-me"/></svg></div>
+                  <div class="chip on" style="position:absolute;bottom:-2px;right:-8px;padding:3px 7px">사진</div>
+                </div>
+              </div>
+              <div class="fldset">
+                <div class="lbl">이름 <span class="req">*</span></div>
+                <div class="fld focus">김은혜</div>
+              </div>
+              <div class="fldset">
+                <div class="lbl">한 줄 소개</div>
+                <div class="fld">예) 세부에서 아이들과 함께합니다</div>
+              </div>
+              <div class="card">
+                <div class="row"><div class="check on"><svg><use href="#i-check"/></svg></div>
+                  <div class="grow"><b style="font-size:12.5px">가명을 씁니다</b>
+                    <div class="mini">사역지가 노출되면 위험한 경우 실명 대신 부르는 이름을 쓸 수 있습니다.</div></div></div>
               </div>
             </div>
-            <div class="fldset">
-              <div class="lbl">소개</div>
-              <div class="fld" style="height:62px">이 방이 어떤 모임인지 한두 줄로</div>
-            </div>
-            <div class="fldset">
-              <div class="lbl">초대할 수 있는 사람</div>
-              <div class="card" style="padding:0;gap:0">
-                <div class="row" style="padding:10px 11px"><div class="radio on"></div>
-                  <span class="grow" style="font-size:12.5px">방장만</span></div>
+            <div class="foot"><div class="btn">다음</div></div>
+          </div></div>
+        </figure>
+  
+        <!-- 05 교회 -->
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag">M1</span><span class="seq mono">05</span></div>
+            <h3>소속 교회 <span class="req">필수</span></h3>
+            <code>app/(onboarding)/church.tsx</code>
+            <p>건너뛰기 버튼이 없는 유일한 단계다. 자동완성은 <code style="display:inline;font-size:11px">record_church()</code> RPC가 쌓은 이름을 제안해 표기 흔들림을 줄인다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><svg><use href="#i-back"/></svg><span class="t">소속 교회</span><span class="r mini">2 / 4</span></div>
+            <div class="body">
+              <div class="steps"><i class="on"></i><i class="on"></i><i></i><i></i></div>
+              <div class="h1">출석 교회를 알려주세요</div>
+              <div class="p">검증하지 않습니다. 다만 적어야 한다는 사실이 진입 문턱이 되고, 방을 여는 사람이 확인할 근거가 됩니다.</div>
+              <div class="fldset" style="margin-top:2px">
+                <div class="lbl">출석 교회 <span class="req">*</span></div>
+                <div class="fld focus">새중앙</div>
+              </div>
+              <div class="card" style="padding:0;gap:0;overflow:hidden">
+                <div class="row" style="padding:10px 11px"><span class="grow"><b style="font-size:12.5px">새중앙교회</b>
+                  <span class="mini"> · 안양시 동안구</span></span><span class="mini">1,204명</span></div>
                 <div class="rule"></div>
-                <div class="row" style="padding:10px 11px"><div class="radio"></div>
-                  <span class="grow" style="font-size:12.5px">멤버 누구나</span></div>
+                <div class="row" style="padding:10px 11px"><span class="grow"><b style="font-size:12.5px">새중앙성결교회</b>
+                  <span class="mini"> · 부천시</span></span><span class="mini">28명</span></div>
+                <div class="rule"></div>
+                <div class="row" style="padding:10px 11px;color:var(--a-accent)">
+                  <svg style="width:14px;height:14px"><use href="#i-plus"/></svg>
+                  <span style="font-size:12.5px;font-weight:700">"새중앙" 새로 등록</span></div>
+              </div>
+              <div class="fldset">
+                <div class="lbl">교단 · 지역 (권장)</div>
+                <div class="fld">예) 예장합동 · 경기 안양</div>
               </div>
             </div>
-            <div class="mini">만들면 자동으로 방장이 됩니다. 이 방은 초대받은 사람에게만 존재가 보입니다.</div>
-          </div>
-          <div class="foot"><div class="btn">만들기</div></div>
-        </div></div>
-      </figure>
-
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag later">M2</span><span class="seq mono">15</span></div>
-          <h3>방 — 피드 · 멤버 · 초대</h3>
-          <code>app/community/[id]/index.tsx</code>
-          <p>한 화면 안 세 탭. 초대 링크는 만료·횟수·즉시 무효화가 목록에서 바로 보여야 한다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><svg><use href="#i-back"/></svg><span class="t">새중앙교회 파송 기도방</span>
-            <span class="r"><svg><use href="#i-dots"/></svg></span></div>
-          <div class="body">
-            <div class="tabs"><span>피드</span><span>멤버 34</span><span class="on">초대</span></div>
-            <div class="card soft" style="margin-top:12px">
-              <div class="lbl" style="color:var(--a-accent)">사용 중인 초대</div>
-              <div class="row"><b class="mono" style="font-size:16px;letter-spacing:.1em">K7M-4QP</b>
-                <span class="chip ac" style="margin-left:auto">복사</span></div>
-              <div class="mini">8월 20일까지 · 10회 중 3회 사용</div>
-              <div class="row" style="gap:6px"><div class="btn sm ghost grow">링크 공유</div>
-                <div class="btn sm mute grow" style="color:var(--a-danger)">즉시 무효화</div></div>
+            <div class="foot"><div class="btn">다음</div><div class="mini" style="text-align:center">건너뛸 수 없습니다</div></div>
+          </div></div>
+        </figure>
+  
+        <!-- 06 선교사 여부 -->
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag">M1</span><span class="seq mono">06</span></div>
+            <h3>선교사 여부</h3>
+            <code>app/(onboarding)/role.tsx</code>
+            <p>여기서 "예"를 고른 사람만 다음 화면(파송 정보)을 본다. 아니면 바로 서약으로 건너뛴다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><svg><use href="#i-back"/></svg><span class="t">역할</span><span class="r mini">3 / 4</span></div>
+            <div class="body">
+              <div class="steps"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+              <div class="h1">선교사이신가요</div>
+              <div class="p">선교사로 표시해도 곧바로 인증되지는 않습니다. 인증은 관리자 확인 후 따로 붙습니다.</div>
+              <div class="card" style="border-color:var(--a-accent)">
+                <div class="row"><div class="radio on"></div><div class="grow">
+                  <b style="font-size:13px">네, 선교사입니다</b>
+                  <div class="mini">파송 형태를 다음 화면에서 확인합니다.</div></div></div>
+              </div>
+              <div class="card">
+                <div class="row"><div class="radio"></div><div class="grow">
+                  <b style="font-size:13px">아니요, 함께 기도하는 사람입니다</b>
+                  <div class="mini">방 참여·글쓰기·기도 반응은 모두 가능합니다.</div></div></div>
+              </div>
+              <div class="card soft">
+                <div class="lbl" style="color:var(--a-accent)">인증이 여는 것</div>
+                <div class="p" style="font-size:11.5px">광장 글쓰기 · 후원 계좌 등록 · 숙소 요청. 셋 다 남에게 열리거나 남의 집이 걸린 일입니다. 프라이빗 방 활동은 인증 없이 다 됩니다.</div>
+              </div>
             </div>
-            <div class="lbl" style="margin-top:6px">지난 초대</div>
-            <div class="card">
-              <div class="spread"><b class="mono strike" style="font-size:13px">B2X-9WD</b><span class="chip out">만료</span></div>
-              <div class="mini">8월 5일 만료 · 5회 모두 사용</div>
+            <div class="foot"><div class="btn">다음</div></div>
+          </div></div>
+        </figure>
+  
+        <!-- 07 파송 정보 -->
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag">M1</span><span class="seq mono">07</span></div>
+            <h3>파송 정보</h3>
+            <code>app/(onboarding)/sending.tsx</code>
+            <p>자비량·독립 선교사는 "파송 교회 없음"을 선택으로 명시한다. 빈칸으로 넘기게 두지 않는다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><svg><use href="#i-back"/></svg><span class="t">파송 정보</span><span class="r mini">3 / 4</span></div>
+            <div class="body">
+              <div class="steps"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+              <div class="seg"><span class="on">파송 선교사</span><span>자비량 · 독립</span></div>
+              <div class="fldset">
+                <div class="lbl">파송 교회 <span class="req">*</span></div>
+                <div class="fld filled">새중앙교회</div>
+              </div>
+              <div class="card flat">
+                <div class="row"><div class="check on"><svg><use href="#i-check"/></svg></div>
+                  <span style="font-size:12.5px">출석 교회와 같습니다</span></div>
+              </div>
+              <div class="fldset">
+                <div class="lbl">파송 단체 (선택)</div>
+                <div class="fld">예) GMS, 인터콥</div>
+              </div>
+              <div class="fldset">
+                <div class="lbl">사역 지역</div>
+                <div class="fld filled">필리핀 세부</div>
+              </div>
+              <div class="card">
+                <div class="row"><div class="check on"><svg><use href="#i-check"/></svg></div>
+                  <div class="grow"><b style="font-size:12.5px">지역을 비공개로</b>
+                    <div class="mini">"동남아"까지만 보이고 도시명은 감춥니다.</div></div></div>
+              </div>
             </div>
-            <div class="btn ghost sm">새 초대 만들기</div>
-          </div>
-        </div></div>
-      </figure>
-
+            <div class="foot"><div class="btn">다음</div></div>
+          </div></div>
+        </figure>
+  
+        <!-- 08 서약 -->
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag">M1</span><span class="seq mono">08</span></div>
+            <h3>서약 동의</h3>
+            <code>app/(onboarding)/pledge.tsx</code>
+            <p>약관이 아니라 서약이다. 캡처·외부 공유 금지를 사람 말로 읽히게 쓰고, 전체 동의 한 방을 두지 않는다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><svg><use href="#i-back"/></svg><span class="t">서약</span><span class="r mini">4 / 4</span></div>
+            <div class="body">
+              <div class="steps"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+              <div class="h1">들어오기 전에<br>세 가지를 약속합니다</div>
+              <div class="card">
+                <div class="row"><div class="check on"><svg><use href="#i-check"/></svg></div>
+                  <div class="grow"><b style="font-size:12.5px">방에서 본 것을 밖으로 옮기지 않겠습니다</b>
+                    <div class="mini">캡처·복사해 다른 단톡방이나 SNS에 올리지 않습니다.</div></div></div>
+              </div>
+              <div class="card">
+                <div class="row"><div class="check on"><svg><use href="#i-check"/></svg></div>
+                  <div class="grow"><b style="font-size:12.5px">사역지와 이름을 함부로 말하지 않겠습니다</b>
+                    <div class="mini">누군가의 안전이 걸린 정보일 수 있습니다.</div></div></div>
+              </div>
+              <div class="card">
+                <div class="row"><div class="check"><svg><use href="#i-check"/></svg></div>
+                  <div class="grow"><b style="font-size:12.5px">이용약관과 개인정보 처리방침에 동의합니다</b>
+                    <div class="mini">읽어보기</div></div></div>
+              </div>
+            </div>
+            <div class="foot"><div class="btn dim">동의하고 시작하기</div></div>
+          </div></div>
+        </figure>
+  
+        <!-- 09 초대 진입 -->
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag">M1</span><span class="seq mono">09</span></div>
+            <h3>초대 링크로 진입</h3>
+            <code>app/invite/[code].tsx</code>
+            <p>아직 멤버가 아니라 정책으로는 아무것도 안 보인다. 이 화면의 내용은 전부 <code style="display:inline;font-size:11px">preview_invite()</code> RPC가 낸다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="body center">
+              <div class="chip ac">초대장</div>
+              <div class="avt lg ac" style="border-radius:18px">새</div>
+              <div>
+                <div class="h1">새중앙교회<br>파송 기도방</div>
+                <div class="p" style="margin-top:8px">이하은 님이 초대했습니다</div>
+              </div>
+              <div class="chips" style="justify-content:center">
+                <span class="chip">멤버 34명</span><span class="chip"><svg style="width:11px;height:11px"><use href="#i-lock"/></svg> 초대 전용</span>
+              </div>
+              <div class="p" style="max-width:230px">세부 사역을 위해 함께 기도하는 방입니다. 매주 화요일에 기도 편지가 올라옵니다.</div>
+            </div>
+            <div class="foot">
+              <div class="btn">참여하기</div>
+              <div class="mini" style="text-align:center">참여하면 이 방의 멤버에게 이름과 소속 교회가 보입니다.</div>
+            </div>
+          </div></div>
+        </figure>
+  
+      </div>
+    </section>
+  
+    <!-- ═══════════════════════════════ 인증 ═══════════════════════════════ -->
     </div>
-  </section>
 
-  <!-- ═══════════════════════════════ 피드 ═══════════════════════════════ -->
-  <section class="flow" id="feed">
-    <header>
-      <h2>흐름 4 — 피드와 글쓰기</h2>
-      <span class="note">M3 · 구조 확인용</span>
-    </header>
-    <p class="sub">글쓰기 마지막 단계에서 <b>선택한 방 이름을 크게</b> 보여준다. 어디로 나가는 글인지 착각하면
-      이 앱이 막으려던 사고가 바로 그 지점에서 난다.</p>
+    <div class="pane" id="p-verify" role="tabpanel" aria-labelledby="t-verify" hidden>
+    <section class="flow" id="verify">
+      <header>
+        <h2>흐름 2 — 선교사 인증</h2>
+        <span class="note">M1 · 3화면</span>
+      </header>
+      <p class="sub">M2 이후의 권한이 전부 여기에 물려 있다. 신청 화면과 심사 화면이 M1 안에서 짝으로 나와야
+        광장·후원·숙소를 만들 때 막힌 데서 시작하지 않는다.</p>
+  
+      <div class="grid">
+  
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag">M1</span><span class="seq mono">10</span></div>
+            <h3>인증 신청</h3>
+            <code>app/me/verification.tsx</code>
+            <p>관리자가 실제로 대조할 것만 받는다 — 파송 교회, 단체, 추천인. 서류 업로드는 넣지 않는다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><svg><use href="#i-back"/></svg><span class="t">선교사 인증</span></div>
+            <div class="body">
+              <div class="card soft">
+                <div class="row"><svg style="width:16px;height:16px;color:var(--a-accent)"><use href="#i-shield"/></svg>
+                  <b style="font-size:12.5px;color:var(--a-accent)">인증되면 열리는 것</b></div>
+                <div class="p" style="font-size:11.5px">광장에 글쓰기 · 후원 계좌 등록 · 숙소 요청</div>
+              </div>
+              <div class="fldset">
+                <div class="lbl">파송 교회</div>
+                <div class="fld filled">새중앙교회 · 안양시 동안구</div>
+              </div>
+              <div class="fldset">
+                <div class="lbl">파송 단체</div>
+                <div class="fld filled">GMS</div>
+              </div>
+              <div class="fldset">
+                <div class="lbl">추천인 <span class="req">*</span></div>
+                <div class="fld focus">이하은 (새중앙교회 선교부)</div>
+                <div class="mini">앱 안의 회원이면 알림으로 확인을 요청합니다.</div>
+              </div>
+              <div class="fldset">
+                <div class="lbl">확인할 수 있는 연락처</div>
+                <div class="fld">교회 사무실 또는 담당자 전화</div>
+              </div>
+            </div>
+            <div class="foot"><div class="btn">심사 요청</div>
+              <div class="mini" style="text-align:center">보통 2~3일 걸립니다.</div></div>
+          </div></div>
+        </figure>
+  
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag">M1</span><span class="seq mono">11</span></div>
+            <h3>심사 대기 상태</h3>
+            <code>app/me/verification.tsx</code>
+            <p>같은 라우트의 다른 상태. 대기 중에도 프라이빗 방 활동은 전부 열려 있다는 걸 여기서 말해준다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><svg><use href="#i-back"/></svg><span class="t">선교사 인증</span></div>
+            <div class="body" style="justify-content:center;gap:16px">
+              <div class="row" style="justify-content:center"><span class="chip warn" style="padding:6px 12px;font-size:12px">심사 중</span></div>
+              <div style="text-align:center">
+                <div class="h2">확인하고 있습니다</div>
+                <div class="p" style="margin-top:6px">8월 13일에 요청하셨습니다. 추천인 이하은 님께 확인을 요청해 두었습니다.</div>
+              </div>
+              <div class="card">
+                <div class="spread"><span style="font-size:12.5px">파송 교회 대조</span><span class="chip ok">확인</span></div>
+                <div class="rule"></div>
+                <div class="spread"><span style="font-size:12.5px">추천인 응답</span><span class="chip out">대기</span></div>
+                <div class="rule"></div>
+                <div class="spread"><span style="font-size:12.5px">관리자 최종 승인</span><span class="chip out">대기</span></div>
+              </div>
+              <div class="p" style="text-align:center">그동안에도 초대받은 방에서는 글쓰기·댓글·기도 반응이 모두 됩니다.</div>
+            </div>
+            <div class="foot"><div class="btn mute">신청 취소</div></div>
+          </div></div>
+        </figure>
+  
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag">M1</span><span class="seq mono">12</span></div>
+            <h3>인증 심사 — 관리자</h3>
+            <code>app/(admin)/verifications.tsx</code>
+            <p>탭에 없는 별도 화면. <code style="display:inline;font-size:11px">profiles.is_admin</code> 인 계정에만 라우트가 열린다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><svg><use href="#i-back"/></svg><span class="t">인증 심사</span><span class="r"><span class="chip on">3</span></span></div>
+            <div class="body">
+              <div class="seg"><span class="on">대기 3</span><span>승인</span><span>보류</span></div>
+              <div class="card">
+                <div class="row"><div class="avt">김</div><div class="grow">
+                  <b style="font-size:13px">김은혜</b><div class="mini">필리핀 세부 · 8월 13일 신청</div></div></div>
+                <div class="rule"></div>
+                <div class="mini">출석·파송 <b style="color:var(--a-text-2)">새중앙교회</b> (동일) · 단체 <b style="color:var(--a-text-2)">GMS</b></div>
+                <div class="mini">추천인 <b style="color:var(--a-text-2)">이하은</b> — 확인함 (8/13)</div>
+                <div class="row" style="gap:6px"><div class="btn sm grow">승인</div><div class="btn sm mute grow">보류</div></div>
+              </div>
+              <div class="card">
+                <div class="row"><div class="avt">박</div><div class="grow">
+                  <b style="font-size:13px">박선우</b><div class="mini">자비량 · 일본 후쿠오카 · 8월 12일</div></div></div>
+                <div class="rule"></div>
+                <div class="mini">출석 <b style="color:var(--a-text-2)">수영로교회</b> · 파송 교회 없음</div>
+                <div class="mini" style="color:var(--a-warning)">추천인 응답 없음 — 3일 경과</div>
+              </div>
+            </div>
+          </div></div>
+        </figure>
+  
+      </div>
+    </section>
+  
+    <!-- ═══════════════════════════════ 커뮤니티 ═══════════════════════════════ -->
+    </div>
 
-    <div class="grid">
+    <div class="pane" id="p-community" role="tabpanel" aria-labelledby="t-community" hidden>
+    <section class="flow" id="community">
+      <header>
+        <h2>흐름 3 — 커뮤니티</h2>
+        <span class="note">M2 · 구조 확인용</span>
+      </header>
+      <p class="sub">권한의 뿌리다. 방 목록에서 광장은 맨 위에 고정으로 한 줄 두되, 프라이빗 방과 시각적으로 구분한다 —
+        같은 목록에 섞이면 어디에 쓰는 글인지 헷갈린다.</p>
+  
+      <div class="grid">
+  
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag later">M2</span><span class="seq mono">13</span></div>
+            <h3>커뮤니티 탭</h3>
+            <code>app/(tabs)/communities.tsx</code>
+            <p>가입 직후에는 광장 한 줄만 있는 화면이다. 그 빈 상태가 첫인상이므로 "방 만들기 / 초대 코드 입력"을 크게 둔다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><span class="t big">커뮤니티</span><span class="r"><svg><use href="#i-plus"/></svg></span></div>
+            <div class="body fade">
+              <div class="card soft">
+                <div class="row"><div class="avt ac">광</div><div class="grow">
+                  <b style="font-size:13px">광장</b><div class="mini">앱 회원 모두가 봅니다</div></div>
+                  <span class="chip ac">12</span></div>
+              </div>
+              <div class="lbl" style="margin-top:4px">내 방 4</div>
+              <div class="card">
+                <div class="row"><div class="avt">새</div><div class="grow">
+                  <b style="font-size:13px">새중앙교회 파송 기도방</b>
+                  <div class="mini">이하은 · 방금 · 기도제목 3</div></div><span class="chip on">3</span></div>
+              </div>
+              <div class="card">
+                <div class="row"><div class="avt">세</div><div class="grow">
+                  <b style="font-size:13px">필리핀 세부 사역팀</b>
+                  <div class="mini">김은혜 · 2시간 전</div></div><span class="chip out">방장</span></div>
+              </div>
+              <div class="card">
+                <div class="row"><div class="avt">화</div><div class="grow">
+                  <b style="font-size:13px">화요 중보기도 모임</b>
+                  <div class="mini">박선우 · 어제</div></div></div>
+              </div>
+              <div class="card">
+                <div class="row"><div class="avt">가</div><div class="grow">
+                  <b style="font-size:13px">가족방</b><div class="mini">멤버 5명</div></div></div>
+              </div>
+            </div>
+            <div class="tabbar">
+              <a><svg><use href="#i-home"/></svg><span>홈</span></a>
+              <a class="on"><svg><use href="#i-comm"/></svg><span>커뮤니티</span></a>
+              <a><svg><use href="#i-stay"/></svg><span>숙소</span></a>
+              <a><span class="dot"><svg><use href="#i-bell"/></svg></span><span>알림</span></a>
+              <a><svg><use href="#i-me"/></svg><span>내 정보</span></a>
+            </div>
+          </div></div>
+        </figure>
+  
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag later">M2</span><span class="seq mono">14</span></div>
+            <h3>방 만들기</h3>
+            <code>app/community/new.tsx</code>
+            <p>회원 누구나 만든다. 광장은 여기서 만들 수 없다 — <code style="display:inline;font-size:11px">create_community()</code> RPC가 private만 받는다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><svg><use href="#i-back"/></svg><span class="t">방 만들기</span></div>
+            <div class="body">
+              <div class="fldset">
+                <div class="lbl">방 이름 <span class="req">*</span></div>
+                <div class="fld focus">새중앙교회 파송 기도방</div>
+              </div>
+              <div class="fldset">
+                <div class="lbl">종류</div>
+                <div class="chips">
+                  <span class="chip on">파송 교회</span><span class="chip">선교 단체</span>
+                  <span class="chip">기도 모임</span><span class="chip">가족</span><span class="chip">기타</span>
+                </div>
+              </div>
+              <div class="fldset">
+                <div class="lbl">소개</div>
+                <div class="fld" style="height:62px">이 방이 어떤 모임인지 한두 줄로</div>
+              </div>
+              <div class="fldset">
+                <div class="lbl">초대할 수 있는 사람</div>
+                <div class="card" style="padding:0;gap:0">
+                  <div class="row" style="padding:10px 11px"><div class="radio on"></div>
+                    <span class="grow" style="font-size:12.5px">방장만</span></div>
+                  <div class="rule"></div>
+                  <div class="row" style="padding:10px 11px"><div class="radio"></div>
+                    <span class="grow" style="font-size:12.5px">멤버 누구나</span></div>
+                </div>
+              </div>
+              <div class="mini">만들면 자동으로 방장이 됩니다. 이 방은 초대받은 사람에게만 존재가 보입니다.</div>
+            </div>
+            <div class="foot"><div class="btn">만들기</div></div>
+          </div></div>
+        </figure>
+  
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag later">M2</span><span class="seq mono">15</span></div>
+            <h3>방 — 피드 · 멤버 · 초대</h3>
+            <code>app/community/[id]/index.tsx</code>
+            <p>한 화면 안 세 탭. 초대 링크는 만료·횟수·즉시 무효화가 목록에서 바로 보여야 한다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><svg><use href="#i-back"/></svg><span class="t">새중앙교회 파송 기도방</span>
+              <span class="r"><svg><use href="#i-dots"/></svg></span></div>
+            <div class="body">
+              <div class="tabs"><span>피드</span><span>멤버 34</span><span class="on">초대</span></div>
+              <div class="card soft" style="margin-top:12px">
+                <div class="lbl" style="color:var(--a-accent)">사용 중인 초대</div>
+                <div class="row"><b class="mono" style="font-size:16px;letter-spacing:.1em">K7M-4QP</b>
+                  <span class="chip ac" style="margin-left:auto">복사</span></div>
+                <div class="mini">8월 20일까지 · 10회 중 3회 사용</div>
+                <div class="row" style="gap:6px"><div class="btn sm ghost grow">링크 공유</div>
+                  <div class="btn sm mute grow" style="color:var(--a-danger)">즉시 무효화</div></div>
+              </div>
+              <div class="lbl" style="margin-top:6px">지난 초대</div>
+              <div class="card">
+                <div class="spread"><b class="mono strike" style="font-size:13px">B2X-9WD</b><span class="chip out">만료</span></div>
+                <div class="mini">8월 5일 만료 · 5회 모두 사용</div>
+              </div>
+              <div class="btn ghost sm">새 초대 만들기</div>
+            </div>
+          </div></div>
+        </figure>
+  
+      </div>
+    </section>
+  
+    <!-- ═══════════════════════════════ 피드 ═══════════════════════════════ -->
+    </div>
 
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag later">M3</span><span class="seq mono">16</span></div>
-          <h3>홈 — 합친 피드</h3>
-          <code>app/(tabs)/index.tsx</code>
-          <p>글마다 어느 방에서 왔는지 배지가 붙는다. 같은 글이 두 방에 올라가도 홈에서는 한 번만 보인다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><span class="t big">홈</span><span class="r mini">전체 방 ▾</span></div>
-          <div class="body fade">
-            <div class="card">
-              <div class="row"><div class="avt">김</div><div class="grow">
-                <div class="row" style="gap:5px"><b style="font-size:12.5px">김은혜</b>
-                  <svg style="width:12px;height:12px;color:var(--a-accent)"><use href="#i-shield"/></svg></div>
-                <div class="mini">2시간 전</div></div>
-                <span class="chip ac">기도제목</span></div>
-              <div class="chips"><span class="chip out">새중앙교회 파송 기도방</span><span class="chip out">화요 중보기도</span></div>
-              <div style="font-size:12.5px;line-height:1.6">세부 빈민가 아이들 방과후 교실이 다음 주 월요일에 개강합니다. 교사 두 분이 아직 채워지지 않아 함께 기도해 주세요.</div>
-              <div class="thumb" style="height:96px"><svg><use href="#i-image"/></svg></div>
+    <div class="pane" id="p-feed" role="tabpanel" aria-labelledby="t-feed" hidden>
+    <section class="flow" id="feed">
+      <header>
+        <h2>흐름 4 — 피드와 글쓰기</h2>
+        <span class="note">M3 · 구조 확인용</span>
+      </header>
+      <p class="sub">글쓰기 마지막 단계에서 <b>선택한 방 이름을 크게</b> 보여준다. 어디로 나가는 글인지 착각하면
+        이 앱이 막으려던 사고가 바로 그 지점에서 난다.</p>
+  
+      <div class="grid">
+  
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag later">M3</span><span class="seq mono">16</span></div>
+            <h3>홈 — 합친 피드</h3>
+            <code>app/(tabs)/index.tsx</code>
+            <p>글마다 어느 방에서 왔는지 배지가 붙는다. 같은 글이 두 방에 올라가도 홈에서는 한 번만 보인다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><span class="t big">홈</span><span class="r mini">전체 방 ▾</span></div>
+            <div class="body fade">
+              <div class="card">
+                <div class="row"><div class="avt">김</div><div class="grow">
+                  <div class="row" style="gap:5px"><b style="font-size:12.5px">김은혜</b>
+                    <svg style="width:12px;height:12px;color:var(--a-accent)"><use href="#i-shield"/></svg></div>
+                  <div class="mini">2시간 전</div></div>
+                  <span class="chip ac">기도제목</span></div>
+                <div class="chips"><span class="chip out">새중앙교회 파송 기도방</span><span class="chip out">화요 중보기도</span></div>
+                <div style="font-size:12.5px;line-height:1.6">세부 빈민가 아이들 방과후 교실이 다음 주 월요일에 개강합니다. 교사 두 분이 아직 채워지지 않아 함께 기도해 주세요.</div>
+                <div class="thumb" style="height:96px"><svg><use href="#i-image"/></svg></div>
+                <div class="rule"></div>
+                <div class="row" style="gap:14px;color:var(--a-text-2)">
+                  <span class="row" style="gap:5px"><svg style="width:15px;height:15px;color:var(--a-accent)"><use href="#i-pray"/></svg>
+                    <b style="font-size:12px;color:var(--a-accent)">기도했어요 12</b></span>
+                  <span class="row" style="gap:5px"><svg style="width:15px;height:15px"><use href="#i-cmt"/></svg>
+                    <span style="font-size:12px">4</span></span></div>
+              </div>
+              <div class="card">
+                <div class="row"><div class="avt">이</div><div class="grow">
+                  <b style="font-size:12.5px">이하은</b><div class="mini">어제</div></div>
+                  <span class="chip ok">응답됨</span></div>
+                <div class="chips"><span class="chip out">새중앙교회 파송 기도방</span></div>
+                <div style="font-size:12.5px;line-height:1.6">지난달 기도 부탁드린 비자 문제가 해결됐습니다. 감사합니다.</div>
+              </div>
+            </div>
+            <div class="fab"><svg><use href="#i-plus"/></svg></div>
+            <div class="tabbar">
+              <a class="on"><svg><use href="#i-home"/></svg><span>홈</span></a>
+              <a><svg><use href="#i-comm"/></svg><span>커뮤니티</span></a>
+              <a><svg><use href="#i-stay"/></svg><span>숙소</span></a>
+              <a><span class="dot"><svg><use href="#i-bell"/></svg></span><span>알림</span></a>
+              <a><svg><use href="#i-me"/></svg><span>내 정보</span></a>
+            </div>
+          </div></div>
+        </figure>
+  
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag later">M3</span><span class="seq mono">17</span></div>
+            <h3>글쓰기 — 대상 방 고르기</h3>
+            <code>app/post/new.tsx</code>
+            <p>글쓰기의 마지막 단계. 고른 방 이름을 다시 크게 확인시키고, 광장이 섞여 있으면 경고를 띄운다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><svg><use href="#i-back"/></svg><span class="t">어디에 올릴까요</span><span class="r mini">3 / 3</span></div>
+            <div class="body">
+              <div class="steps"><i class="on"></i><i class="on"></i><i class="on"></i></div>
+              <div class="card soft">
+                <div class="lbl" style="color:var(--a-accent)">이 글이 나가는 곳</div>
+                <div style="font-size:15px;font-weight:700;line-height:1.5">새중앙교회 파송 기도방<br>화요 중보기도 모임</div>
+                <div class="mini">두 방의 멤버 51명이 봅니다.</div>
+              </div>
+              <div class="lbl">내 방</div>
+              <div class="card"><div class="row"><div class="check on"><svg><use href="#i-check"/></svg></div>
+                <span class="grow" style="font-size:12.5px">새중앙교회 파송 기도방</span><span class="mini">34명</span></div></div>
+              <div class="card"><div class="row"><div class="check on"><svg><use href="#i-check"/></svg></div>
+                <span class="grow" style="font-size:12.5px">화요 중보기도 모임</span><span class="mini">17명</span></div></div>
+              <div class="card"><div class="row"><div class="check"><svg><use href="#i-check"/></svg></div>
+                <span class="grow" style="font-size:12.5px">필리핀 세부 사역팀</span><span class="mini">9명</span></div></div>
+              <div class="lbl" style="margin-top:2px">모두에게</div>
+              <div class="card"><div class="row"><div class="check"><svg><use href="#i-check"/></svg></div>
+                <div class="grow"><span style="font-size:12.5px">광장</span>
+                  <div class="mini" style="color:var(--a-warning)">앱 회원 전체가 봅니다</div></div></div></div>
+            </div>
+            <div class="foot"><div class="btn">두 방에 올리기</div></div>
+          </div></div>
+        </figure>
+  
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag later">M3</span><span class="seq mono">18</span></div>
+            <h3>글 상세 — 방마다 따로 쌓이는 댓글</h3>
+            <code>app/post/[id].tsx</code>
+            <p>같은 글이라도 내가 속한 방의 댓글만 보인다. 그래서 화면 위에 <b>지금 어느 방으로 보는 중인지</b>를 띄운다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><svg><use href="#i-back"/></svg><span class="t">기도제목</span><span class="r"><svg><use href="#i-dots"/></svg></span></div>
+            <div class="body fade">
+              <div class="seg"><span class="on">새중앙교회 4</span><span>화요 중보 2</span></div>
+              <div class="card flat">
+                <div class="row"><div class="avt">김</div><div class="grow">
+                  <b style="font-size:12.5px">김은혜</b><div class="mini">2시간 전 · 세부</div></div></div>
+                <div style="font-size:13px;line-height:1.65;margin-top:4px">세부 빈민가 아이들 방과후 교실이 다음 주 월요일에 개강합니다. 교사 두 분이 아직 채워지지 않아 함께 기도해 주세요.</div>
+              </div>
+              <div class="btn ghost sm"><svg style="width:15px;height:15px"><use href="#i-pray"/></svg> 기도했어요 · 12</div>
               <div class="rule"></div>
-              <div class="row" style="gap:14px;color:var(--a-text-2)">
-                <span class="row" style="gap:5px"><svg style="width:15px;height:15px;color:var(--a-accent)"><use href="#i-pray"/></svg>
-                  <b style="font-size:12px;color:var(--a-accent)">기도했어요 12</b></span>
-                <span class="row" style="gap:5px"><svg style="width:15px;height:15px"><use href="#i-cmt"/></svg>
-                  <span style="font-size:12px">4</span></span></div>
-            </div>
-            <div class="card">
-              <div class="row"><div class="avt">이</div><div class="grow">
-                <b style="font-size:12.5px">이하은</b><div class="mini">어제</div></div>
-                <span class="chip ok">응답됨</span></div>
-              <div class="chips"><span class="chip out">새중앙교회 파송 기도방</span></div>
-              <div style="font-size:12.5px;line-height:1.6">지난달 기도 부탁드린 비자 문제가 해결됐습니다. 감사합니다.</div>
-            </div>
-          </div>
-          <div class="fab"><svg><use href="#i-plus"/></svg></div>
-          <div class="tabbar">
-            <a class="on"><svg><use href="#i-home"/></svg><span>홈</span></a>
-            <a><svg><use href="#i-comm"/></svg><span>커뮤니티</span></a>
-            <a><svg><use href="#i-stay"/></svg><span>숙소</span></a>
-            <a><span class="dot"><svg><use href="#i-bell"/></svg></span><span>알림</span></a>
-            <a><svg><use href="#i-me"/></svg><span>내 정보</span></a>
-          </div>
-        </div></div>
-      </figure>
-
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag later">M3</span><span class="seq mono">17</span></div>
-          <h3>글쓰기 — 대상 방 고르기</h3>
-          <code>app/post/new.tsx</code>
-          <p>글쓰기의 마지막 단계. 고른 방 이름을 다시 크게 확인시키고, 광장이 섞여 있으면 경고를 띄운다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><svg><use href="#i-back"/></svg><span class="t">어디에 올릴까요</span><span class="r mini">3 / 3</span></div>
-          <div class="body">
-            <div class="steps"><i class="on"></i><i class="on"></i><i class="on"></i></div>
-            <div class="card soft">
-              <div class="lbl" style="color:var(--a-accent)">이 글이 나가는 곳</div>
-              <div style="font-size:15px;font-weight:700;line-height:1.5">새중앙교회 파송 기도방<br>화요 중보기도 모임</div>
-              <div class="mini">두 방의 멤버 51명이 봅니다.</div>
-            </div>
-            <div class="lbl">내 방</div>
-            <div class="card"><div class="row"><div class="check on"><svg><use href="#i-check"/></svg></div>
-              <span class="grow" style="font-size:12.5px">새중앙교회 파송 기도방</span><span class="mini">34명</span></div></div>
-            <div class="card"><div class="row"><div class="check on"><svg><use href="#i-check"/></svg></div>
-              <span class="grow" style="font-size:12.5px">화요 중보기도 모임</span><span class="mini">17명</span></div></div>
-            <div class="card"><div class="row"><div class="check"><svg><use href="#i-check"/></svg></div>
-              <span class="grow" style="font-size:12.5px">필리핀 세부 사역팀</span><span class="mini">9명</span></div></div>
-            <div class="lbl" style="margin-top:2px">모두에게</div>
-            <div class="card"><div class="row"><div class="check"><svg><use href="#i-check"/></svg></div>
-              <div class="grow"><span style="font-size:12.5px">광장</span>
-                <div class="mini" style="color:var(--a-warning)">앱 회원 전체가 봅니다</div></div></div></div>
-          </div>
-          <div class="foot"><div class="btn">두 방에 올리기</div></div>
-        </div></div>
-      </figure>
-
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag later">M3</span><span class="seq mono">18</span></div>
-          <h3>글 상세 — 방마다 따로 쌓이는 댓글</h3>
-          <code>app/post/[id].tsx</code>
-          <p>같은 글이라도 내가 속한 방의 댓글만 보인다. 그래서 화면 위에 <b>지금 어느 방으로 보는 중인지</b>를 띄운다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><svg><use href="#i-back"/></svg><span class="t">기도제목</span><span class="r"><svg><use href="#i-dots"/></svg></span></div>
-          <div class="body fade">
-            <div class="seg"><span class="on">새중앙교회 4</span><span>화요 중보 2</span></div>
-            <div class="card flat">
-              <div class="row"><div class="avt">김</div><div class="grow">
-                <b style="font-size:12.5px">김은혜</b><div class="mini">2시간 전 · 세부</div></div></div>
-              <div style="font-size:13px;line-height:1.65;margin-top:4px">세부 빈민가 아이들 방과후 교실이 다음 주 월요일에 개강합니다. 교사 두 분이 아직 채워지지 않아 함께 기도해 주세요.</div>
-            </div>
-            <div class="btn ghost sm"><svg style="width:15px;height:15px"><use href="#i-pray"/></svg> 기도했어요 · 12</div>
-            <div class="rule"></div>
-            <div class="card flat">
-              <div class="row"><div class="avt" style="width:24px;height:24px;font-size:10px">이</div>
-                <div class="grow"><b style="font-size:12px">이하은</b> <span class="mini">1시간 전</span>
-                  <div style="font-size:12.5px">교사 자리, 청년부에 한번 물어보겠습니다.</div></div></div>
-            </div>
-            <div class="card flat">
-              <div class="row"><div class="avt" style="width:24px;height:24px;font-size:10px">박</div>
-                <div class="grow"><b style="font-size:12px">박선우</b> <span class="mini">40분 전</span>
-                  <div style="font-size:12.5px">개강일에 맞춰 함께 기도하겠습니다.</div></div></div>
-            </div>
-          </div>
-          <div class="foot"><div class="fld">새중앙교회 파송 기도방에 댓글 남기기</div></div>
-        </div></div>
-      </figure>
-
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════ 후원·숙소 ═══════════════════════════════ -->
-  <section class="flow" id="support">
-    <header>
-      <h2>흐름 5 — 후원과 숙소</h2>
-      <span class="note">M4 · M5 · 구조 확인용</span>
-    </header>
-    <p class="sub">후원은 앱 안에서 결제하지 않는다. 계좌를 보여주고 복사시키는 데서 끝난다.
-      숙소는 상세 주소가 <b>다른 표</b>에 있어 수락 전에는 화면에 올라올 값 자체가 없다.</p>
-
-    <div class="grid">
-
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag later">M4</span><span class="seq mono">19</span></div>
-          <h3>후원 계좌</h3>
-          <code>app/community/[id]/support.tsx</code>
-          <p>목표 금액도 모금 게이지도 랭킹도 없다. 있으면 커뮤니티가 모금판이 된다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><svg><use href="#i-back"/></svg><span class="t">후원 안내</span></div>
-          <div class="body">
-            <div class="card flat" style="align-items:center;text-align:center;gap:8px">
-              <div class="avt lg">김</div>
-              <div><div class="row" style="gap:5px;justify-content:center">
-                <b style="font-size:15px">김은혜</b>
-                <svg style="width:14px;height:14px;color:var(--a-accent)"><use href="#i-shield"/></svg></div>
-                <div class="mini">필리핀 세부 · 새중앙교회 파송</div></div>
-            </div>
-            <div class="card">
-              <div class="lbl">후원 계좌</div>
-              <div class="spread"><div><b style="font-size:13px">국민은행</b>
-                <div class="mono" style="font-size:14px">123456-01-789012</div>
-                <div class="mini">예금주 김은혜</div></div>
-                <span class="chip ac">복사</span></div>
-            </div>
-            <div class="card">
-              <div class="lbl">QR</div>
-              <div class="thumb" style="height:110px"><svg><use href="#i-image"/></svg></div>
-            </div>
-            <div class="card soft">
-              <div class="p" style="font-size:11.5px">앱은 계좌를 안내만 합니다. 송금은 각자 은행 앱에서 직접 하시고, 앱은 금액을 알지 못합니다.</div>
-            </div>
-            <div class="btn ghost sm">보냈다고 표시하기</div>
-          </div>
-        </div></div>
-      </figure>
-
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag later">M5</span><span class="seq mono">20</span></div>
-          <h3>숙소 찾기</h3>
-          <code>app/(tabs)/stays.tsx</code>
-          <p>앱 전역 기능이라 방과 무관하다. 목록에는 <code style="display:inline;font-size:11px">region_label</code>(시·구)까지만 나온다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><span class="t big">숙소</span><span class="r mini">내 숙소</span></div>
-          <div class="body fade">
-            <div class="fld row"><svg style="width:15px;height:15px;color:var(--a-text-3)"><use href="#i-search"/></svg>
-              <span>지역 · 기간으로 찾기</span></div>
-            <div class="chips"><span class="chip on">전체</span><span class="chip">무료</span>
-              <span class="chip">서울·경기</span><span class="chip">가족 가능</span></div>
-            <div class="card" style="padding:0;overflow:hidden">
-              <div class="thumb" style="height:104px;border-radius:0"><svg><use href="#i-image"/></svg></div>
-              <div style="padding:11px;display:flex;flex-direction:column;gap:5px">
-                <div class="spread"><b style="font-size:13px">안양 · 방 1칸</b><span class="chip ok">무료</span></div>
-                <div class="mini">안양시 동안구 · 최대 3명 · 주차 가능</div>
-                <div class="mini">8월 20일 ~ 9월 30일 가능</div>
+              <div class="card flat">
+                <div class="row"><div class="avt" style="width:24px;height:24px;font-size:10px">이</div>
+                  <div class="grow"><b style="font-size:12px">이하은</b> <span class="mini">1시간 전</span>
+                    <div style="font-size:12.5px">교사 자리, 청년부에 한번 물어보겠습니다.</div></div></div>
+              </div>
+              <div class="card flat">
+                <div class="row"><div class="avt" style="width:24px;height:24px;font-size:10px">박</div>
+                  <div class="grow"><b style="font-size:12px">박선우</b> <span class="mini">40분 전</span>
+                    <div style="font-size:12.5px">개강일에 맞춰 함께 기도하겠습니다.</div></div></div>
               </div>
             </div>
-            <div class="card" style="padding:0;overflow:hidden">
-              <div class="thumb" style="height:104px;border-radius:0"><svg><use href="#i-image"/></svg></div>
-              <div style="padding:11px;display:flex;flex-direction:column;gap:5px">
-                <div class="spread"><b style="font-size:13px">부산 수영구 · 원룸</b><span class="chip">3만원 / 박</span></div>
-                <div class="mini">수영구 광안동 · 최대 2명</div>
-              </div>
-            </div>
-          </div>
-          <div class="tabbar">
-            <a><svg><use href="#i-home"/></svg><span>홈</span></a>
-            <a><svg><use href="#i-comm"/></svg><span>커뮤니티</span></a>
-            <a class="on"><svg><use href="#i-stay"/></svg><span>숙소</span></a>
-            <a><span class="dot"><svg><use href="#i-bell"/></svg></span><span>알림</span></a>
-            <a><svg><use href="#i-me"/></svg><span>내 정보</span></a>
-          </div>
-        </div></div>
-      </figure>
-
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag later">M5</span><span class="seq mono">21</span></div>
-          <h3>숙소 상세 — 주소는 아직</h3>
-          <code>app/stay/[id].tsx</code>
-          <p>흐릿하게 가린 게 아니라 서버가 주지 않는 값이다. <code style="display:inline;font-size:11px">stay_addresses</code> 행이 정책에서 막힌다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><svg><use href="#i-back"/></svg><span class="t">안양 · 방 1칸</span></div>
-          <div class="body fade">
-            <div class="thumb" style="height:120px"><svg><use href="#i-image"/></svg></div>
-            <div class="spread"><b style="font-size:15px">안양 · 방 1칸</b><span class="chip ok">무료</span></div>
-            <div class="mini">최대 3명 · 주차 가능 · 8월 20일 ~ 9월 30일</div>
-            <div class="card">
-              <div class="lbl">위치</div>
-              <div style="font-size:13px">경기 안양시 동안구</div>
-              <div class="masked" style="font-size:13px">평촌대로 123 힐스테이트 902호</div>
-              <div class="row" style="gap:5px;color:var(--a-text-3)">
-                <svg style="width:12px;height:12px"><use href="#i-lock"/></svg>
-                <span class="mini">상세 주소는 호스트가 요청을 수락한 뒤에 열립니다.</span></div>
-            </div>
-            <div class="card">
-              <div class="row"><div class="avt">정</div><div class="grow">
-                <b style="font-size:12.5px">정민서</b><div class="mini">온누리교회 · 호스트</div></div></div>
-              <div class="p" style="font-size:12px">안식년으로 들어오시는 분들 편히 쉬다 가시라고 방 하나 비워뒀습니다.</div>
-            </div>
-          </div>
-          <div class="foot"><div class="btn">머물기 요청하기</div>
-            <div class="mini" style="text-align:center">인증 선교사만 요청할 수 있습니다.</div></div>
-        </div></div>
-      </figure>
-
+            <div class="foot"><div class="fld">새중앙교회 파송 기도방에 댓글 남기기</div></div>
+          </div></div>
+        </figure>
+  
+      </div>
+    </section>
+  
+    <!-- ═══════════════════════════════ 후원·숙소 ═══════════════════════════════ -->
     </div>
-  </section>
 
-  <!-- ═══════════════════════════════ 알림·내 정보 ═══════════════════════════════ -->
-  <section class="flow" id="etc">
-    <header>
-      <h2>흐름 6 — 알림과 내 정보</h2>
-      <span class="note">M6 · 구조 확인용</span>
-    </header>
-    <p class="sub">알림 본문에 기도제목 내용을 넣지 않는다. 잠금화면은 앱 바깥이라 방 밖으로 새는 첫 번째 구멍이 된다.</p>
-
-    <div class="grid">
-
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag later">M6</span><span class="seq mono">22</span></div>
-          <h3>알림</h3>
-          <code>app/(tabs)/notifications.tsx</code>
-          <p>푸시는 "새 기도제목이 올라왔습니다"까지만. 내용은 앱을 열어야 보인다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><span class="t big">알림</span><span class="r mini">모두 읽음</span></div>
-          <div class="body fade">
-            <div class="card soft">
-              <div class="row"><svg style="width:16px;height:16px;color:var(--a-accent)"><use href="#i-shield"/></svg>
-                <div class="grow"><b style="font-size:12.5px">선교사 인증이 완료됐습니다</b>
-                  <div class="mini">방금 · 광장 글쓰기와 후원 계좌 등록이 열렸습니다</div></div></div>
-            </div>
-            <div class="card flat">
-              <div class="row"><div class="avt" style="width:26px;height:26px;font-size:10px">이</div>
-                <div class="grow"><span style="font-size:12.5px"><b>이하은</b> 님이 회원님의 기도제목에 기도했습니다</span>
-                  <div class="mini">1시간 전 · 새중앙교회 파송 기도방</div></div></div>
-            </div>
-            <div class="card flat">
-              <div class="row"><div class="avt" style="width:26px;height:26px;font-size:10px">새</div>
-                <div class="grow"><span style="font-size:12.5px"><b>새중앙교회 파송 기도방</b>에 새 기도제목이 올라왔습니다</span>
-                  <div class="mini">2시간 전</div></div></div>
-            </div>
-            <div class="card flat">
-              <div class="row"><div class="avt" style="width:26px;height:26px;font-size:10px">정</div>
-                <div class="grow"><span style="font-size:12.5px"><b>정민서</b> 님이 머물기 요청을 수락했습니다</span>
-                  <div class="mini">어제 · 상세 주소가 열렸습니다</div></div></div>
-            </div>
-          </div>
-          <div class="tabbar">
-            <a><svg><use href="#i-home"/></svg><span>홈</span></a>
-            <a><svg><use href="#i-comm"/></svg><span>커뮤니티</span></a>
-            <a><svg><use href="#i-stay"/></svg><span>숙소</span></a>
-            <a class="on"><svg><use href="#i-bell"/></svg><span>알림</span></a>
-            <a><svg><use href="#i-me"/></svg><span>내 정보</span></a>
-          </div>
-        </div></div>
-      </figure>
-
-      <figure class="scr">
-        <figcaption class="cap">
-          <div class="line"><span class="tag">M1</span><span class="seq mono">23</span></div>
-          <h3>내 정보</h3>
-          <code>app/(tabs)/me.tsx</code>
-          <p>M1에서는 프로필 편집·인증 신청·로그아웃까지만 산다. 나머지 줄은 각 마일스톤에서 하나씩 채워진다.</p>
-        </figcaption>
-        <div class="ph"><div class="screen">
-          <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
-          <div class="nav"><span class="t big">내 정보</span></div>
-          <div class="body fade">
-            <div class="card">
-              <div class="row"><div class="avt lg">김</div><div class="grow">
-                <div class="row" style="gap:5px"><b style="font-size:15px">김은혜</b>
+    <div class="pane" id="p-support" role="tabpanel" aria-labelledby="t-support" hidden>
+    <section class="flow" id="support">
+      <header>
+        <h2>흐름 5 — 후원과 숙소</h2>
+        <span class="note">M4 · M5 · 구조 확인용</span>
+      </header>
+      <p class="sub">후원은 앱 안에서 결제하지 않는다. 계좌를 보여주고 복사시키는 데서 끝난다.
+        숙소는 상세 주소가 <b>다른 표</b>에 있어 수락 전에는 화면에 올라올 값 자체가 없다.</p>
+  
+      <div class="grid">
+  
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag later">M4</span><span class="seq mono">19</span></div>
+            <h3>후원 계좌</h3>
+            <code>app/community/[id]/support.tsx</code>
+            <p>목표 금액도 모금 게이지도 랭킹도 없다. 있으면 커뮤니티가 모금판이 된다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><svg><use href="#i-back"/></svg><span class="t">후원 안내</span></div>
+            <div class="body">
+              <div class="card flat" style="align-items:center;text-align:center;gap:8px">
+                <div class="avt lg">김</div>
+                <div><div class="row" style="gap:5px;justify-content:center">
+                  <b style="font-size:15px">김은혜</b>
                   <svg style="width:14px;height:14px;color:var(--a-accent)"><use href="#i-shield"/></svg></div>
-                <div class="mini">새중앙교회 · 필리핀 세부</div>
-                <div class="chips" style="margin-top:5px"><span class="chip ac">인증 선교사</span><span class="chip out">가명 사용</span></div>
-              </div></div>
+                  <div class="mini">필리핀 세부 · 새중앙교회 파송</div></div>
+              </div>
+              <div class="card">
+                <div class="lbl">후원 계좌</div>
+                <div class="spread"><div><b style="font-size:13px">국민은행</b>
+                  <div class="mono" style="font-size:14px">123456-01-789012</div>
+                  <div class="mini">예금주 김은혜</div></div>
+                  <span class="chip ac">복사</span></div>
+              </div>
+              <div class="card">
+                <div class="lbl">QR</div>
+                <div class="thumb" style="height:110px"><svg><use href="#i-image"/></svg></div>
+              </div>
+              <div class="card soft">
+                <div class="p" style="font-size:11.5px">앱은 계좌를 안내만 합니다. 송금은 각자 은행 앱에서 직접 하시고, 앱은 금액을 알지 못합니다.</div>
+              </div>
+              <div class="btn ghost sm">보냈다고 표시하기</div>
             </div>
-            <div class="card" style="padding:0;gap:0">
-              <div class="row" style="padding:11px"><span class="grow" style="font-size:12.5px">프로필 편집</span><span class="mini">›</span></div>
-              <div class="rule"></div>
-              <div class="row" style="padding:11px"><span class="grow" style="font-size:12.5px">선교사 인증</span><span class="chip ok">완료</span></div>
-              <div class="rule"></div>
-              <div class="row" style="padding:11px"><span class="grow" style="font-size:12.5px">후원 계좌 관리</span><span class="mini">›</span></div>
-              <div class="rule"></div>
-              <div class="row" style="padding:11px"><span class="grow" style="font-size:12.5px">내 머물기 요청</span><span class="mini">1건 ›</span></div>
+          </div></div>
+        </figure>
+  
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag later">M5</span><span class="seq mono">20</span></div>
+            <h3>숙소 찾기</h3>
+            <code>app/(tabs)/stays.tsx</code>
+            <p>앱 전역 기능이라 방과 무관하다. 목록에는 <code style="display:inline;font-size:11px">region_label</code>(시·구)까지만 나온다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><span class="t big">숙소</span><span class="r mini">내 숙소</span></div>
+            <div class="body fade">
+              <div class="fld row"><svg style="width:15px;height:15px;color:var(--a-text-3)"><use href="#i-search"/></svg>
+                <span>지역 · 기간으로 찾기</span></div>
+              <div class="chips"><span class="chip on">전체</span><span class="chip">무료</span>
+                <span class="chip">서울·경기</span><span class="chip">가족 가능</span></div>
+              <div class="card" style="padding:0;overflow:hidden">
+                <div class="thumb" style="height:104px;border-radius:0"><svg><use href="#i-image"/></svg></div>
+                <div style="padding:11px;display:flex;flex-direction:column;gap:5px">
+                  <div class="spread"><b style="font-size:13px">안양 · 방 1칸</b><span class="chip ok">무료</span></div>
+                  <div class="mini">안양시 동안구 · 최대 3명 · 주차 가능</div>
+                  <div class="mini">8월 20일 ~ 9월 30일 가능</div>
+                </div>
+              </div>
+              <div class="card" style="padding:0;overflow:hidden">
+                <div class="thumb" style="height:104px;border-radius:0"><svg><use href="#i-image"/></svg></div>
+                <div style="padding:11px;display:flex;flex-direction:column;gap:5px">
+                  <div class="spread"><b style="font-size:13px">부산 수영구 · 원룸</b><span class="chip">3만원 / 박</span></div>
+                  <div class="mini">수영구 광안동 · 최대 2명</div>
+                </div>
+              </div>
             </div>
-            <div class="card" style="padding:0;gap:0">
-              <div class="row" style="padding:11px"><span class="grow" style="font-size:12.5px">알림 설정</span><span class="mini">›</span></div>
-              <div class="rule"></div>
-              <div class="row" style="padding:11px"><span class="grow" style="font-size:12.5px">차단 목록</span><span class="mini">›</span></div>
-              <div class="rule"></div>
-              <div class="row" style="padding:11px"><span class="grow" style="font-size:12.5px;color:var(--a-danger)">로그아웃</span></div>
+            <div class="tabbar">
+              <a><svg><use href="#i-home"/></svg><span>홈</span></a>
+              <a><svg><use href="#i-comm"/></svg><span>커뮤니티</span></a>
+              <a class="on"><svg><use href="#i-stay"/></svg><span>숙소</span></a>
+              <a><span class="dot"><svg><use href="#i-bell"/></svg></span><span>알림</span></a>
+              <a><svg><use href="#i-me"/></svg><span>내 정보</span></a>
             </div>
-          </div>
-          <div class="tabbar">
-            <a><svg><use href="#i-home"/></svg><span>홈</span></a>
-            <a><svg><use href="#i-comm"/></svg><span>커뮤니티</span></a>
-            <a><svg><use href="#i-stay"/></svg><span>숙소</span></a>
-            <a><span class="dot"><svg><use href="#i-bell"/></svg></span><span>알림</span></a>
-            <a class="on"><svg><use href="#i-me"/></svg><span>내 정보</span></a>
-          </div>
-        </div></div>
-      </figure>
-
+          </div></div>
+        </figure>
+  
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag later">M5</span><span class="seq mono">21</span></div>
+            <h3>숙소 상세 — 주소는 아직</h3>
+            <code>app/stay/[id].tsx</code>
+            <p>흐릿하게 가린 게 아니라 서버가 주지 않는 값이다. <code style="display:inline;font-size:11px">stay_addresses</code> 행이 정책에서 막힌다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><svg><use href="#i-back"/></svg><span class="t">안양 · 방 1칸</span></div>
+            <div class="body fade">
+              <div class="thumb" style="height:120px"><svg><use href="#i-image"/></svg></div>
+              <div class="spread"><b style="font-size:15px">안양 · 방 1칸</b><span class="chip ok">무료</span></div>
+              <div class="mini">최대 3명 · 주차 가능 · 8월 20일 ~ 9월 30일</div>
+              <div class="card">
+                <div class="lbl">위치</div>
+                <div style="font-size:13px">경기 안양시 동안구</div>
+                <div class="masked" style="font-size:13px">평촌대로 123 힐스테이트 902호</div>
+                <div class="row" style="gap:5px;color:var(--a-text-3)">
+                  <svg style="width:12px;height:12px"><use href="#i-lock"/></svg>
+                  <span class="mini">상세 주소는 호스트가 요청을 수락한 뒤에 열립니다.</span></div>
+              </div>
+              <div class="card">
+                <div class="row"><div class="avt">정</div><div class="grow">
+                  <b style="font-size:12.5px">정민서</b><div class="mini">온누리교회 · 호스트</div></div></div>
+                <div class="p" style="font-size:12px">안식년으로 들어오시는 분들 편히 쉬다 가시라고 방 하나 비워뒀습니다.</div>
+              </div>
+            </div>
+            <div class="foot"><div class="btn">머물기 요청하기</div>
+              <div class="mini" style="text-align:center">인증 선교사만 요청할 수 있습니다.</div></div>
+          </div></div>
+        </figure>
+  
+      </div>
+    </section>
+  
+    <!-- ═══════════════════════════════ 알림·내 정보 ═══════════════════════════════ -->
     </div>
-  </section>
 
-  <section class="tail">
-    <h2>이 갤러리를 보면서 정해야 할 것</h2>
-    <ul>
-      <li><b>온보딩 4단계가 맞는가.</b> 프로필 → 교회 → 역할 → 서약. 가입 직후 이탈이 걱정되면 서약을 뒤로 미룰 수 있지만, 그러면 첫 글을 쓰기 전에 다시 막아야 한다.</li>
-      <li><b>가명 옵션을 프로필 단계에 둘 것인가.</b> 지금은 04번에 있다. 설정 깊숙이 두면 정작 필요한 사람이 못 찾는다.</li>
-      <li><b>서약 문구.</b> 08번의 세 줄은 초안이다. 이 앱이 무엇을 지키려는지 사용자가 처음 읽는 문장이라 문구를 직접 확정해야 한다.</li>
-      <li><b>광장의 이름.</b> 기획안 미결 항목이다. 코드는 <code class="mono">type='open'</code> 으로 찾으므로 이름은 나중에 바꿔도 된다.</li>
-      <li><b>인증 신청에서 받을 항목.</b> 10번은 추천인 필수 · 서류 없음으로 그렸다. 실제 심사에 부족하면 여기서 늘려야 한다.</li>
-    </ul>
-  </section>
+    <div class="pane" id="p-etc" role="tabpanel" aria-labelledby="t-etc" hidden>
+    <section class="flow" id="etc">
+      <header>
+        <h2>흐름 6 — 알림과 내 정보</h2>
+        <span class="note">M6 · 구조 확인용</span>
+      </header>
+      <p class="sub">알림 본문에 기도제목 내용을 넣지 않는다. 잠금화면은 앱 바깥이라 방 밖으로 새는 첫 번째 구멍이 된다.</p>
+  
+      <div class="grid">
+  
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag later">M6</span><span class="seq mono">22</span></div>
+            <h3>알림</h3>
+            <code>app/(tabs)/notifications.tsx</code>
+            <p>푸시는 "새 기도제목이 올라왔습니다"까지만. 내용은 앱을 열어야 보인다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><span class="t big">알림</span><span class="r mini">모두 읽음</span></div>
+            <div class="body fade">
+              <div class="card soft">
+                <div class="row"><svg style="width:16px;height:16px;color:var(--a-accent)"><use href="#i-shield"/></svg>
+                  <div class="grow"><b style="font-size:12.5px">선교사 인증이 완료됐습니다</b>
+                    <div class="mini">방금 · 광장 글쓰기와 후원 계좌 등록이 열렸습니다</div></div></div>
+              </div>
+              <div class="card flat">
+                <div class="row"><div class="avt" style="width:26px;height:26px;font-size:10px">이</div>
+                  <div class="grow"><span style="font-size:12.5px"><b>이하은</b> 님이 회원님의 기도제목에 기도했습니다</span>
+                    <div class="mini">1시간 전 · 새중앙교회 파송 기도방</div></div></div>
+              </div>
+              <div class="card flat">
+                <div class="row"><div class="avt" style="width:26px;height:26px;font-size:10px">새</div>
+                  <div class="grow"><span style="font-size:12.5px"><b>새중앙교회 파송 기도방</b>에 새 기도제목이 올라왔습니다</span>
+                    <div class="mini">2시간 전</div></div></div>
+              </div>
+              <div class="card flat">
+                <div class="row"><div class="avt" style="width:26px;height:26px;font-size:10px">정</div>
+                  <div class="grow"><span style="font-size:12.5px"><b>정민서</b> 님이 머물기 요청을 수락했습니다</span>
+                    <div class="mini">어제 · 상세 주소가 열렸습니다</div></div></div>
+              </div>
+            </div>
+            <div class="tabbar">
+              <a><svg><use href="#i-home"/></svg><span>홈</span></a>
+              <a><svg><use href="#i-comm"/></svg><span>커뮤니티</span></a>
+              <a><svg><use href="#i-stay"/></svg><span>숙소</span></a>
+              <a class="on"><svg><use href="#i-bell"/></svg><span>알림</span></a>
+              <a><svg><use href="#i-me"/></svg><span>내 정보</span></a>
+            </div>
+          </div></div>
+        </figure>
+  
+        <figure class="scr">
+          <figcaption class="cap">
+            <div class="line"><span class="tag">M1</span><span class="seq mono">23</span></div>
+            <h3>내 정보</h3>
+            <code>app/(tabs)/me.tsx</code>
+            <p>M1에서는 프로필 편집·인증 신청·로그아웃까지만 산다. 나머지 줄은 각 마일스톤에서 하나씩 채워진다.</p>
+          </figcaption>
+          <div class="ph"><div class="screen">
+            <div class="sb"><span>9:41</span><span class="dots"><i></i><i></i><b></b></span></div>
+            <div class="nav"><span class="t big">내 정보</span></div>
+            <div class="body fade">
+              <div class="card">
+                <div class="row"><div class="avt lg">김</div><div class="grow">
+                  <div class="row" style="gap:5px"><b style="font-size:15px">김은혜</b>
+                    <svg style="width:14px;height:14px;color:var(--a-accent)"><use href="#i-shield"/></svg></div>
+                  <div class="mini">새중앙교회 · 필리핀 세부</div>
+                  <div class="chips" style="margin-top:5px"><span class="chip ac">인증 선교사</span><span class="chip out">가명 사용</span></div>
+                </div></div>
+              </div>
+              <div class="card" style="padding:0;gap:0">
+                <div class="row" style="padding:11px"><span class="grow" style="font-size:12.5px">프로필 편집</span><span class="mini">›</span></div>
+                <div class="rule"></div>
+                <div class="row" style="padding:11px"><span class="grow" style="font-size:12.5px">선교사 인증</span><span class="chip ok">완료</span></div>
+                <div class="rule"></div>
+                <div class="row" style="padding:11px"><span class="grow" style="font-size:12.5px">후원 계좌 관리</span><span class="mini">›</span></div>
+                <div class="rule"></div>
+                <div class="row" style="padding:11px"><span class="grow" style="font-size:12.5px">내 머물기 요청</span><span class="mini">1건 ›</span></div>
+              </div>
+              <div class="card" style="padding:0;gap:0">
+                <div class="row" style="padding:11px"><span class="grow" style="font-size:12.5px">알림 설정</span><span class="mini">›</span></div>
+                <div class="rule"></div>
+                <div class="row" style="padding:11px"><span class="grow" style="font-size:12.5px">차단 목록</span><span class="mini">›</span></div>
+                <div class="rule"></div>
+                <div class="row" style="padding:11px"><span class="grow" style="font-size:12.5px;color:var(--a-danger)">로그아웃</span></div>
+              </div>
+            </div>
+            <div class="tabbar">
+              <a><svg><use href="#i-home"/></svg><span>홈</span></a>
+              <a><svg><use href="#i-comm"/></svg><span>커뮤니티</span></a>
+              <a><svg><use href="#i-stay"/></svg><span>숙소</span></a>
+              <a><span class="dot"><svg><use href="#i-bell"/></svg></span><span>알림</span></a>
+              <a class="on"><svg><use href="#i-me"/></svg><span>내 정보</span></a>
+            </div>
+          </div></div>
+        </figure>
+  
+      </div>
+    </section>
+    </div>
+
+    <section class="tail">
+      <h2>이 갤러리를 보면서 정해야 할 것</h2>
+      <ul>
+        <li><b>온보딩 4단계가 맞는가.</b> 프로필 → 교회 → 역할 → 서약. 가입 직후 이탈이 걱정되면 서약을 뒤로 미룰 수 있지만, 그러면 첫 글을 쓰기 전에 다시 막아야 한다.</li>
+        <li><b>가명 옵션을 프로필 단계에 둘 것인가.</b> 지금은 04번에 있다. 설정 깊숙이 두면 정작 필요한 사람이 못 찾는다.</li>
+        <li><b>서약 문구.</b> 08번의 세 줄은 초안이다. 이 앱이 무엇을 지키려는지 사용자가 처음 읽는 문장이라 문구를 직접 확정해야 한다.</li>
+        <li><b>광장의 이름.</b> 기획안 미결 항목이다. 코드는 <code class="mono">type='open'</code> 으로 찾으므로 이름은 나중에 바꿔도 된다.</li>
+        <li><b>인증 신청에서 받을 항목.</b> 10번은 추천인 필수 · 서류 없음으로 그렸다. 실제 심사에 부족하면 여기서 늘려야 한다.</li>
+      </ul>
+    </section>
+  </div>
 
 </main>
 
 <script>
+  /* 앱 팔레트 미리보기 토글 */
   const stage = document.querySelector('.stage');
   document.querySelectorAll('[data-app-theme]').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -1354,4 +1682,62 @@ body {
       });
     });
   });
+
+  /* 탭 — 상위(문서 구역) · 하위(화면 흐름) 두 벌이 같은 코드를 쓴다 */
+  function setupTabs(list) {
+    const tabs = [...list.querySelectorAll('[role="tab"]')];
+    const byHash = {};
+    tabs.forEach((t) => { byHash[t.dataset.hash] = t; });
+
+    function select(tab, moveFocus) {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+      if (moveFocus) tab.focus();
+    }
+
+    list.addEventListener('click', (e) => {
+      const t = e.target.closest('[role="tab"]');
+      if (!t) return;
+      select(t);
+      history.replaceState(null, '', '#' + t.dataset.hash);
+    });
+
+    /* 좌우 화살표로 탭 사이를 옮긴다. 탭 위젯의 기본 동작이다 */
+    list.addEventListener('keydown', (e) => {
+      const i = tabs.indexOf(document.activeElement);
+      if (i < 0) return;
+      let n = null;
+      if (e.key === 'ArrowRight') n = (i + 1) % tabs.length;
+      else if (e.key === 'ArrowLeft') n = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === 'Home') n = 0;
+      else if (e.key === 'End') n = tabs.length - 1;
+      if (n === null) return;
+      e.preventDefault();
+      select(tabs[n], true);
+    });
+
+    return { select, byHash };
+  }
+
+  /* top 은 window.top 이라 이름으로 쓸 수 없다 */
+  const areaTabs = setupTabs(document.querySelector('.wrap > .tabs'));
+  const flowTabs = setupTabs(document.querySelector('.tabs.sub'));
+
+  /* 주소창의 #해시로 바로 들어올 수 있게 한다. 예전 링크(#feed)도 그대로 산다 */
+  function openFromHash() {
+    const h = location.hash.slice(1);
+    if (!h) return;
+    if (flowTabs.byHash[h]) {
+      areaTabs.select(areaTabs.byHash.gallery);
+      flowTabs.select(flowTabs.byHash[h]);
+    } else if (areaTabs.byHash[h]) {
+      areaTabs.select(areaTabs.byHash[h]);
+    }
+  }
+  openFromHash();
+  addEventListener('hashchange', openFromHash);
 </script>
