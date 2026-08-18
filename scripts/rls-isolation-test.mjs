@@ -28,7 +28,7 @@ const env = Object.fromEntries(
 const URL_ = env.EXPO_PUBLIC_SUPABASE_URL;
 const KEY = env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
 const BASE = process.env.RLS_TEST_EMAIL_BASE ?? env.RLS_TEST_EMAIL_BASE;
-const PASSWORD = 'michri-Rls-Test-9!';
+const PASSWORD = 'movelet-Rls-Test-9!';
 
 if (!URL_ || !KEY) throw new Error('.env 에 EXPO_PUBLIC_SUPABASE_URL / ANON_KEY 가 필요합니다');
 if (!BASE || !BASE.includes('@')) {
@@ -36,7 +36,7 @@ if (!BASE || !BASE.includes('@')) {
 }
 
 const [local, domain] = BASE.split('@');
-const emailFor = (tag) => `${local}+michri-rls-${tag}@${domain}`;
+const emailFor = (tag) => `${local}+movelet-rls-${tag}@${domain}`;
 
 // ── 결과 집계
 const results = [];

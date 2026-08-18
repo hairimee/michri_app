@@ -1,4 +1,4 @@
--- michri M0 — stays SELECT 정책 수정
+-- movelet M0 — stays SELECT 정책 수정
 --
 -- 문제: 정책이 can_view_stay(id) 를 부르고, 그 함수는 stays 를 다시 조회한다.
 -- `insert ... returning` 은 삽입된 행이 SELECT 정책을 통과해야 값을 돌려주는데, 함수 안의 조회는

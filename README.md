@@ -1,4 +1,4 @@
-# movelet
+# Movelet
 
 선교사와 공동체를 위한 **초대제 프라이빗 커뮤니티 앱**.
 
@@ -129,7 +129,7 @@ npm run test:rls
 ## 구조
 
 ```
-mission_christ/
+movelet/
 ├── docs/
 │   └── product-plan.md          기획안
 ├── src/

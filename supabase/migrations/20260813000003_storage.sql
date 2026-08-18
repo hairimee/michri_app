@@ -1,4 +1,4 @@
--- michri M0 — Storage 버킷과 접근 정책
+-- movelet M0 — Storage 버킷과 접근 정책
 -- 전부 비공개 버킷이다. 앱은 RLS를 통과해 얻은 storage_path로 서명 URL을 만들어 쓴다.
 -- 업로드 경로 규칙: '<auth.uid()>/<파일명>'. 첫 폴더가 업로더 본인이어야 한다.
 

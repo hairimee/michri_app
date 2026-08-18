@@ -1,4 +1,4 @@
--- michri M0 — 함수 노출 조이기 (supabase db advisors 보안 경고 대응)
+-- movelet M0 — 함수 노출 조이기 (supabase db advisors 보안 경고 대응)
 --
 -- 두 가지를 고친다.
 --  1. public 스키마의 함수는 기본적으로 /rest/v1/rpc/<이름> 으로 노출된다. 판정용 헬퍼와 트리거 함수까지

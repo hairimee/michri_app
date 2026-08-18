@@ -1,4 +1,4 @@
--- michri M0 — 방 개설 RPC
+-- movelet M0 — 방 개설 RPC
 --
 -- 왜 정책이 아니라 RPC인가.
 -- `insert ... returning` 은 삽입된 행이 SELECT 정책까지 통과해야 값을 돌려준다. 그런데 방을 만든

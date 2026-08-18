@@ -1,20 +1,20 @@
 {
   "expo": {
-    "name": "michri",
-    "slug": "michri",
+    "name": "Movelet",
+    "slug": "movelet",
     "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "michri",
+    "scheme": "movelet",
     "userInterfaceStyle": "automatic",
     "platforms": ["ios", "android"],
     "ios": {
       "icon": "./assets/expo.icon",
-      "bundleIdentifier": "com.michri.app",
+      "bundleIdentifier": "com.movelet.app",
       "supportsTablet": false
     },
     "android": {
-      "package": "com.michri.app",
+      "package": "com.movelet.app",
       "adaptiveIcon": {
         "backgroundColor": "#0F3F44",
         "foregroundImage": "./assets/images/android-icon-foreground.png",

@@ -1,4 +1,4 @@
--- michri M0 — 판정 헬퍼의 EXECUTE 를 authenticated 에 되돌린다
+-- movelet M0 — 판정 헬퍼의 EXECUTE 를 authenticated 에 되돌린다
 --
 -- 0008에서 헬퍼까지 회수했더니 정책이 통째로 막혔다. RLS 정책 표현식은 질의를 던진 사용자의
 -- 권한으로 평가되므로, 정책이 부르는 함수에도 그 사용자의 EXECUTE 가 필요하다.
