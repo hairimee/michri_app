@@ -1,8 +1,11 @@
 /**
  * 디자인 토큰. 화면 코드에 색·간격 숫자를 직접 쓰지 않는다.
  *
- * 브랜드 컬러 "종이와 잉크" (기획안 v0.6 확정) —
- * 따뜻한 미색 바탕 + 청흑색 본문 + 잉크 파랑 강조.
+ * 브랜드 컬러 "종이와 잉크" —
+ * 순백 직전의 찬 흰 바탕 + 청흑색 본문 + 잉크 파랑 강조.
+ *
+ * 바탕은 순백(#FFFFFF)이 아니다. 순백은 밝은 화면에서 눈이 부시고,
+ * 그보다 밝은 색이 없어 카드·입력칸을 명도로 띄울 수 없다.
  *
  * 값은 OKLCH 로 설계하고 hex 로 옮겼다. React Native 의 StyleSheet 가
  * oklch() 를 파싱하지 못해서다. 주석의 oklch 값이 원본이니 색을 손볼 때는
@@ -22,11 +25,11 @@ const palette = {
   blue100: '#DCE9FC', // oklch(93%   0.030 258) — light accent 배경
   blue900: '#183053', // oklch(31%   0.070 258) — dark accent 배경
 
-  /* 종이 — 따뜻한 미색. 여기만 hue 80 */
-  sand050: '#FDFBF9', // oklch(99%   0.004 80) — 카드 표면. 순백 아님
-  sand100: '#F7F3EC', // oklch(96.5% 0.010 80) — 바탕
-  sand200: '#EBE5DC', // oklch(92.5% 0.014 80) — 눌린 표면
-  sand300: '#DCD7CF', // oklch(88%   0.012 80) — 테두리
+  /* 종이 — 순백 직전의 찬 흰색. 잉크와 같은 hue 258 을 흔적만 남겼다 */
+  paper000: '#FDFEFF', // oklch(99.6% 0.0015 258) — 카드 표면
+  paper100: '#F8FAFC', // oklch(98.4% 0.0030 258) — 바탕
+  paper200: '#EDEFF3', // oklch(95.2% 0.0060 258) — 눌린 표면·입력칸
+  paper300: '#D5D9DF', // oklch(88.5% 0.0090 258) — 테두리
 
   /* 잉크 — 청흑색 본문 */
   ink900: '#111721', // oklch(20.5% 0.022 258)
@@ -50,17 +53,17 @@ const palette = {
 
 export const Colors = {
   light: {
-    background: palette.sand100,
-    surface: palette.sand050,
-    surfaceAlt: palette.sand200,
-    border: palette.sand300,
+    background: palette.paper100,
+    surface: palette.paper000,
+    surfaceAlt: palette.paper200,
+    border: palette.paper300,
 
     text: palette.ink900,
     textSecondary: palette.ink500,
     textMuted: palette.ink300,
     textOnAccent: palette.white, // 7.77:1
 
-    accent: palette.blue700, // 종이 위 7.03:1
+    accent: palette.blue700, // 종이 위 7.43:1
     accentSoft: palette.blue100,
 
     danger: palette.red500,
