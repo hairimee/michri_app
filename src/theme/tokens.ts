@@ -1,28 +1,46 @@
 /**
  * 디자인 토큰. 화면 코드에 색·간격 숫자를 직접 쓰지 않는다.
  *
- * 색 방향은 아직 확정 전이라(기획안 미결 항목) 차분한 청록–네이비 계열을 임시로 잡아뒀다.
- * 브랜드가 정해지면 이 파일의 값만 바꾸면 된다.
+ * 브랜드 컬러 "종이와 잉크" (기획안 v0.6 확정) —
+ * 따뜻한 미색 바탕 + 청흑색 본문 + 잉크 파랑 강조.
+ *
+ * 값은 OKLCH 로 설계하고 hex 로 옮겼다. React Native 의 StyleSheet 가
+ * oklch() 를 파싱하지 못해서다. 주석의 oklch 값이 원본이니 색을 손볼 때는
+ * hex 를 직접 만지지 말고 oklch 를 바꿔 다시 변환할 것.
+ *
+ * 잉크 색조 hue 258 로 통일했다. 종이·테두리만 hue 80 (따뜻한 쪽)에 남는다 —
+ * 종이는 따뜻하고 잉크는 차갑다는 것이 이 팔레트의 전부다.
+ *
+ * 대비는 WCAG 2.1 로 검증했다. 본문 7:1, 보조 텍스트·강조색 4.5:1,
+ * 흐린 텍스트 3:1 을 라이트·다크 양쪽에서 만족한다.
  */
 
 const palette = {
-  teal900: '#0F3F44',
-  teal700: '#1B6B72',
-  teal500: '#2A9099',
-  teal100: '#DCEFF0',
+  /* 잉크 파랑 — 강조색. 화면의 3% 를 넘기지 않는다 */
+  blue700: '#1550A2', // oklch(44.5% 0.145 258) — light accent
+  blue400: '#74A6EF', // oklch(72%   0.120 258) — dark accent
+  blue100: '#DCE9FC', // oklch(93%   0.030 258) — light accent 배경
+  blue900: '#183053', // oklch(31%   0.070 258) — dark accent 배경
 
-  sand100: '#F6F3EE',
-  sand200: '#EAE4DA',
+  /* 종이 — 따뜻한 미색. 여기만 hue 80 */
+  sand050: '#FDFBF9', // oklch(99%   0.004 80) — 카드 표면. 순백 아님
+  sand100: '#F7F3EC', // oklch(96.5% 0.010 80) — 바탕
+  sand200: '#EBE5DC', // oklch(92.5% 0.014 80) — 눌린 표면
+  sand300: '#DCD7CF', // oklch(88%   0.012 80) — 테두리
 
-  ink900: '#14181A',
-  ink700: '#2C3438',
-  ink500: '#5A666C',
-  ink300: '#98A4AA',
+  /* 잉크 — 청흑색 본문 */
+  ink900: '#111721', // oklch(20.5% 0.022 258)
+  ink700: '#2B333F', // oklch(32%   0.024 258)
+  ink500: '#5C6574', // oklch(50.5% 0.026 258)
+  ink300: '#808A98', // oklch(63%   0.024 258)
 
-  slate900: '#101416',
-  slate800: '#181D20',
-  slate700: '#242B2F',
-  slate600: '#333C41',
+  /* 다크 표면 — 잉크를 그대로 어둡게. 순흑 아님 */
+  slate900: '#0D1117', // oklch(17.5% 0.014 258)
+  slate800: '#171C23', // oklch(22.5% 0.016 258)
+  slate700: '#252A33', // oklch(28.5% 0.018 258)
+  slate600: '#353C46', // oklch(35.5% 0.020 258)
+
+  inkOnBlue: '#0A1320', // oklch(18.5% 0.030 258) — 밝은 파랑 위 글자
 
   white: '#FFFFFF',
   red500: '#C0453B',
@@ -33,17 +51,17 @@ const palette = {
 export const Colors = {
   light: {
     background: palette.sand100,
-    surface: palette.white,
+    surface: palette.sand050,
     surfaceAlt: palette.sand200,
-    border: '#E1DAD0',
+    border: palette.sand300,
 
     text: palette.ink900,
     textSecondary: palette.ink500,
     textMuted: palette.ink300,
-    textOnAccent: palette.white,
+    textOnAccent: palette.white, // 7.77:1
 
-    accent: palette.teal700,
-    accentSoft: palette.teal100,
+    accent: palette.blue700, // 종이 위 7.03:1
+    accentSoft: palette.blue100,
 
     danger: palette.red500,
     warning: palette.amber500,
@@ -55,13 +73,14 @@ export const Colors = {
     surfaceAlt: palette.slate700,
     border: palette.slate600,
 
-    text: '#F2F4F4',
-    textSecondary: '#A9B4B8',
-    textMuted: '#6E7B80',
-    textOnAccent: palette.white,
+    text: '#E9EDF2', // oklch(94.5% 0.008 258)
+    textSecondary: '#A4ABB6', // oklch(74% 0.018 258)
+    textMuted: '#727985', // oklch(57.5% 0.020 258)
+    // 다크의 강조색은 밝다. 흰 글자를 얹으면 2.49:1 로 깨져서 잉크를 얹는다
+    textOnAccent: palette.inkOnBlue, // 7.49:1
 
-    accent: palette.teal500,
-    accentSoft: palette.teal900,
+    accent: palette.blue400, // 다크 바탕 위 7.61:1
+    accentSoft: palette.blue900,
 
     danger: '#E0685D',
     warning: '#E0AB55',
