@@ -1,4 +1,4 @@
-# mission_christ
+# movelet
 
 선교사와 공동체를 위한 **초대제 프라이빗 커뮤니티 앱**.
 
